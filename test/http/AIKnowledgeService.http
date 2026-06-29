@@ -1,0 +1,13 @@
+@server=http://localhost:4004
+
+
+### saveIncident
+# @name saveIncident_POST
+POST {{server}}/odata/v4/aiknowledge/saveIncident
+Content-Type: application/json
+
+{
+    "scenario":"Available Boxes Check",
+    "description":"DIS has a total of 3 available boxes while PSA has only 2 available boxes.\n\nDIS Boxes:\nBOX-0001\nBOX-0002\nBOX-0003\n\nPSA Boxes:\nBOX-0001\nBOX-0002",
+    "resolution":"1. Check the total available boxes from DIS and PSA.\n2. Cross-check if the total available boxes in PSA matches DIS.\n3. If they do not match, compare the box numbers individually.\n4. Determine which box numbers exist in DIS but are missing in PSA or vice versa.\n5. Verify whether the missing boxes are due to synchronization delay or incomplete processing."
+}

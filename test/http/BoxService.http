@@ -1,0 +1,213 @@
+@server=http://localhost:4004
+
+
+### AvailableBoxCheck
+# @name AvailableBoxCheck_GET
+GET {{server}}/odata/v4/box/AvailableBoxCheck
+
+
+
+### AvailableBoxCheck
+# @name AvailableBoxCheck_POST
+POST {{server}}/odata/v4/box/AvailableBoxCheck
+Content-Type: application/json
+
+{
+  "PSABoxNumber": "ableBoxCheck-8712274",
+  "PSAStatus": "PSAStatus-8712274",
+  "DISBoxNumber": "DISBoxNumber-8712274",
+  "DISProcessed": "DISProcessed-8712274",
+  "Matched": true
+}
+
+
+### AvailableBoxCheck
+# @name AvailableBoxCheck_PATCH
+PATCH {{server}}/odata/v4/box/AvailableBoxCheck/ableBoxCheck-8712274
+Content-Type: application/json
+
+{
+  "PSABoxNumber": "ableBoxCheck-8712274",
+  "PSAStatus": "PSAStatus-8712274",
+  "DISBoxNumber": "DISBoxNumber-8712274",
+  "DISProcessed": "DISProcessed-8712274",
+  "Matched": true
+}
+
+
+### AvailableBoxCheck
+# @name AvailableBoxCheck_DELETE
+DELETE {{server}}/odata/v4/box/AvailableBoxCheck/ableBoxCheck-8712274
+Content-Type: application/json
+
+
+### ShippedBolCheck
+# @name ShippedBolCheck_GET
+GET {{server}}/odata/v4/box/ShippedBolCheck
+
+
+
+### ShippedBolCheck
+# @name ShippedBolCheck_POST
+POST {{server}}/odata/v4/box/ShippedBolCheck
+Content-Type: application/json
+
+{
+  "PSABolNo": "ppedBolCheck-8900764",
+  "PSATotalUnits": "SATotalUnits-8900764",
+  "PSATotalVolume": "ATotalVolume-8900764",
+  "PSATotalBoxes": "SATotalBoxes-8900764",
+  "DISBlading": "DISBlading-8900764",
+  "DISTotalUnits": "ISTotalUnits-8900764",
+  "DISTotalVolume": "STotalVolume-8900764",
+  "DISTotalBoxes": "ISTotalBoxes-8900764",
+  "MatchedUnits": true,
+  "MatchedVolume": true,
+  "MatchedBoxes": true
+}
+
+
+### ShippedBolCheck
+# @name ShippedBolCheck_PATCH
+PATCH {{server}}/odata/v4/box/ShippedBolCheck/ppedBolCheck-8900764
+Content-Type: application/json
+
+{
+  "PSABolNo": "ppedBolCheck-8900764",
+  "PSATotalUnits": "SATotalUnits-8900764",
+  "PSATotalVolume": "ATotalVolume-8900764",
+  "PSATotalBoxes": "SATotalBoxes-8900764",
+  "DISBlading": "DISBlading-8900764",
+  "DISTotalUnits": "ISTotalUnits-8900764",
+  "DISTotalVolume": "STotalVolume-8900764",
+  "DISTotalBoxes": "ISTotalBoxes-8900764",
+  "MatchedUnits": true,
+  "MatchedVolume": true,
+  "MatchedBoxes": true
+}
+
+
+### ShippedBolCheck
+# @name ShippedBolCheck_DELETE
+DELETE {{server}}/odata/v4/box/ShippedBolCheck/ppedBolCheck-8900764
+Content-Type: application/json
+
+
+### ShippedConsigneeBOLCheck
+# @name ShippedConsigneeBOLCheck_GET
+GET {{server}}/odata/v4/box/ShippedConsigneeBOLCheck
+
+
+
+### ShippedConsigneeBOLCheck
+# @name ShippedConsigneeBOLCheck_POST
+POST {{server}}/odata/v4/box/ShippedConsigneeBOLCheck
+Content-Type: application/json
+
+{
+  "PSABolNo": "neeBOLCheck-10341917",
+  "PSAConsigneeNo": "ConsigneeNo-10341917",
+  "DISBlading": "DISBlading-10341917",
+  "DISCustomer": "DISCustomer-10341917",
+  "Matched": false
+}
+
+
+### ShippedConsigneeBOLCheck
+# @name ShippedConsigneeBOLCheck_PATCH
+PATCH {{server}}/odata/v4/box/ShippedConsigneeBOLCheck/neeBOLCheck-10341917
+Content-Type: application/json
+
+{
+  "PSABolNo": "neeBOLCheck-10341917",
+  "PSAConsigneeNo": "ConsigneeNo-10341917",
+  "DISBlading": "DISBlading-10341917",
+  "DISCustomer": "DISCustomer-10341917",
+  "Matched": false
+}
+
+
+### ShippedConsigneeBOLCheck
+# @name ShippedConsigneeBOLCheck_DELETE
+DELETE {{server}}/odata/v4/box/ShippedConsigneeBOLCheck/neeBOLCheck-10341917
+Content-Type: application/json
+
+
+### PartNumberBOLCheck
+# @name PartNumberBOLCheck_GET
+GET {{server}}/odata/v4/box/PartNumberBOLCheck
+
+
+
+### PartNumberBOLCheck
+# @name PartNumberBOLCheck_POST
+POST {{server}}/odata/v4/box/PartNumberBOLCheck
+Content-Type: application/json
+
+{
+  "PSABolNo": "mberBOLCheck-3090955",
+  "PSAConsigneeNo": "AConsigneeNo-3090955",
+  "DISBlading": "DISBlading-3090955",
+  "DISCustomer": "DISCustomer-3090955",
+  "Matched": false
+}
+
+
+### PartNumberBOLCheck
+# @name PartNumberBOLCheck_PATCH
+PATCH {{server}}/odata/v4/box/PartNumberBOLCheck/mberBOLCheck-3090955
+Content-Type: application/json
+
+{
+  "PSABolNo": "mberBOLCheck-3090955",
+  "PSAConsigneeNo": "AConsigneeNo-3090955",
+  "DISBlading": "DISBlading-3090955",
+  "DISCustomer": "DISCustomer-3090955",
+  "Matched": false
+}
+
+
+### PartNumberBOLCheck
+# @name PartNumberBOLCheck_DELETE
+DELETE {{server}}/odata/v4/box/PartNumberBOLCheck/mberBOLCheck-3090955
+Content-Type: application/json
+
+
+### MaterialInformationCheck
+# @name MaterialInformationCheck_GET
+GET {{server}}/odata/v4/box/MaterialInformationCheck
+
+
+
+### MaterialInformationCheck
+# @name MaterialInformationCheck_POST
+POST {{server}}/odata/v4/box/MaterialInformationCheck
+Content-Type: application/json
+
+{
+  "PSABoxNumber": "rmationCheck-9502542",
+  "PSAMaterialDescription": "lDescription-9502542",
+  "DISBoxNumber": "DISBoxNumber-9502542",
+  "DISMaterialDesc": "MaterialDesc-9502542",
+  "Matched": true
+}
+
+
+### MaterialInformationCheck
+# @name MaterialInformationCheck_PATCH
+PATCH {{server}}/odata/v4/box/MaterialInformationCheck/rmationCheck-9502542
+Content-Type: application/json
+
+{
+  "PSABoxNumber": "rmationCheck-9502542",
+  "PSAMaterialDescription": "lDescription-9502542",
+  "DISBoxNumber": "DISBoxNumber-9502542",
+  "DISMaterialDesc": "MaterialDesc-9502542",
+  "Matched": true
+}
+
+
+### MaterialInformationCheck
+# @name MaterialInformationCheck_DELETE
+DELETE {{server}}/odata/v4/box/MaterialInformationCheck/rmationCheck-9502542
+Content-Type: application/json
