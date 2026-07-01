@@ -1,5 +1,5 @@
 
-service BoxService {
+service MonitoringService @(path: '/monitoring-service') {
 
   entity AvailableBoxCheck {
    key PSABoxNumber: String(20);
