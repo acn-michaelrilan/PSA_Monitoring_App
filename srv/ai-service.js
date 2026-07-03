@@ -1,73 +1,46 @@
 const cds = require('@sap/cds');
+const axios = require('axios');
+require('dotenv').config();
 
-module.exports = cds.service.impl(async function () {
+module.exports = cds.service.impl(function () {
 
-    const db = await cds.connect.to('db');
+    this.on('askAI', async (req) => {
 
-    /**
-     * Mock Embedding Generator
-     * ------------------------------------
-     * Replace this with an actual embedding API later.
-     */
-    async function generateEmbedding(text) {
+        const { prompt } = req.data;
 
-        console.log("Generating embedding for:");
-        console.log(text);
-
-        // Mock vector (REAL_VECTOR(4))
-        return "[0.21,0.45,-0.33,0.55]";
-    }
-
-    this.on("saveIncident", async (req) => {
         try {
-            const {scenario,description,resolution} = req.data;
-            // Build the knowledge text to embed
-            const embeddingText = `
-                Scenario:
-                ${scenario}
 
-                Description:
-                ${description}
+            const response = await axios.post(
+                "https://api.groq.com/openai/v1/chat/completions",
+                {
+                    model: "llama-3.3-70b-versatile",
+                    messages: [
+                        {
+                            role: "user",
+                            content: prompt
+                        }
+                    ],
+                    temperature: 0.7
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
+                        "Content-Type": "application/json"
+                    }
+                }
+            );
 
-                Resolution:
-                ${resolution}
-                `;
-
-            // Generate embedding
-            const embedding = await generateEmbedding(embeddingText);
-
-            // Generate UUID
-            const id = cds.utils.uuid();
-
-            // Insert into HANA table
-            await db.run(`
-                INSERT INTO AI_KNOWLEDGE
-                (
-                    ID,
-                    SCENARIO,
-                    DESCRIPTION,
-                    RESOLUTION,
-                    EMBEDDING
-                )
-                VALUES
-                (?,?,?,?,TO_REAL_VECTOR(?))`,
-                [
-                    id,
-                    scenario,
-                    description,
-                    resolution,
-                    embedding
-                ]);
-
-            return {
-                success: true,
-                message: "Knowledge saved successfully.",
-                id: id
-            };
+            return response.data.choices[0].message.content;
 
         } catch (err) {
-            console.error(err);
-            req.error(500, err.message);
+
+            console.error(err.response?.data || err.message);
+
+            req.error(500,
+                err.response?.data?.error?.message ||
+                "Groq API Error"
+            );
+
         }
 
     });

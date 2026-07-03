@@ -1,9 +1,9 @@
-service AIKnowledgeService {
+using { cuid } from '@sap/cds/common';
 
-    action saveIncident(
-        scenario    : String,
-        description : LargeString,
-        resolution  : LargeString
+service AIService {
+
+    action askAI(
+        prompt : String
     ) returns String;
 
 }
