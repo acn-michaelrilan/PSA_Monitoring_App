@@ -1,42 +1,89 @@
 _schema-version: 3.3.0
 ID: PSA_Monitoring_App
+description: A simple CAP project.
 version: 1.0.0
-description: "A simple CAP project."
+modules:
+- name: PSA_Monitoring_App-srv
+  type: nodejs
+  path: gen/srv
+  requires:
+  - name: PSA_Monitoring_App-db
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+    instances: 1
+  build-parameters:
+    builder: npm-ci
+- name: PSA_Monitoring_App-db-deployer
+  type: hdb
+  path: gen/db
+  requires:
+  - name: PSA_Monitoring_App-db
+  parameters:
+    buildpack: nodejs_buildpack
+- name: PSA_Monitoring_App-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: PSA_Monitoring_App-repo-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - psamonitoringui.zip
+      name: psamonitoringui
+      target-path: resources/
+- name: psamonitoringui
+  type: html5
+  path: app/psa-monitoring-ui
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: PSA_Monitoring_App-db
+  type: com.sap.xs.hdi-container
+  parameters:
+    service: hana
+    service-plan: hdi-shared
+- name: PSA_Monitoring_App-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: PSA_Monitoring_App-html5-service
+    service-plan: app-host
+- name: PSA_Monitoring_App-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: false
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: PSA_Monitoring_App-destination-service
+    service-plan: lite
 parameters:
+  deploy_mode: html5-repo
   enable-parallel-deployments: true
 build-parameters:
   before-all:
-    - builder: custom
-      commands:
-        - npm ci
-        - npx cds build --production
-modules:
-  - name: PSA_Monitoring_App-srv
-    type: nodejs
-    path: gen/srv
-    parameters:
-      instances: 1
-      buildpack: nodejs_buildpack
-    build-parameters:
-      builder: npm-ci
-    provides:
-      - name: srv-api # required by consumers of CAP services (e.g. approuter)
-        properties:
-          srv-url: ${default-url}
-    requires:
-      - name: PSA_Monitoring_App-db
-
-  - name: PSA_Monitoring_App-db-deployer
-    type: hdb
-    path: gen/db
-    parameters:
-      buildpack: nodejs_buildpack
-    requires:
-      - name: PSA_Monitoring_App-db
-
-resources:
-  - name: PSA_Monitoring_App-db
-    type: com.sap.xs.hdi-container
-    parameters:
-      service: hana
-      service-plan: hdi-shared
+  - builder: custom
+    commands:
+    - npm ci
+    - npx cds build --production
