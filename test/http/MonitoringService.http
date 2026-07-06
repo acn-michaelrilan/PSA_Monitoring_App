@@ -1,0 +1,213 @@
+@server=http://localhost:4004
+
+
+### AvailableBoxCheck
+# @name AvailableBoxCheck_GET
+GET {{server}}/monitoring-service/AvailableBoxCheck
+
+
+
+### AvailableBoxCheck
+# @name AvailableBoxCheck_POST
+POST {{server}}/monitoring-service/AvailableBoxCheck
+Content-Type: application/json
+
+{
+  "PSABoxNumber": "ableBoxCheck-9441763",
+  "PSAStatus": "PSAStatus-9441763",
+  "DISBoxNumber": "DISBoxNumber-9441763",
+  "DISProcessed": "DISProcessed-9441763",
+  "Matched": false
+}
+
+
+### AvailableBoxCheck
+# @name AvailableBoxCheck_PATCH
+PATCH {{server}}/monitoring-service/AvailableBoxCheck/ableBoxCheck-9441763
+Content-Type: application/json
+
+{
+  "PSABoxNumber": "ableBoxCheck-9441763",
+  "PSAStatus": "PSAStatus-9441763",
+  "DISBoxNumber": "DISBoxNumber-9441763",
+  "DISProcessed": "DISProcessed-9441763",
+  "Matched": false
+}
+
+
+### AvailableBoxCheck
+# @name AvailableBoxCheck_DELETE
+DELETE {{server}}/monitoring-service/AvailableBoxCheck/ableBoxCheck-9441763
+Content-Type: application/json
+
+
+### ShippedBolCheck
+# @name ShippedBolCheck_GET
+GET {{server}}/monitoring-service/ShippedBolCheck
+
+
+
+### ShippedBolCheck
+# @name ShippedBolCheck_POST
+POST {{server}}/monitoring-service/ShippedBolCheck
+Content-Type: application/json
+
+{
+  "PSABolNo": "pedBolCheck-10087501",
+  "PSATotalUnits": "ATotalUnits-10087501",
+  "PSATotalVolume": "TotalVolume-10087501",
+  "PSATotalBoxes": "ATotalBoxes-10087501",
+  "DISBlading": "DISBlading-10087501",
+  "DISTotalUnits": "STotalUnits-10087501",
+  "DISTotalVolume": "TotalVolume-10087501",
+  "DISTotalBoxes": "STotalBoxes-10087501",
+  "MatchedUnits": false,
+  "MatchedVolume": false,
+  "MatchedBoxes": false
+}
+
+
+### ShippedBolCheck
+# @name ShippedBolCheck_PATCH
+PATCH {{server}}/monitoring-service/ShippedBolCheck/pedBolCheck-10087501
+Content-Type: application/json
+
+{
+  "PSABolNo": "pedBolCheck-10087501",
+  "PSATotalUnits": "ATotalUnits-10087501",
+  "PSATotalVolume": "TotalVolume-10087501",
+  "PSATotalBoxes": "ATotalBoxes-10087501",
+  "DISBlading": "DISBlading-10087501",
+  "DISTotalUnits": "STotalUnits-10087501",
+  "DISTotalVolume": "TotalVolume-10087501",
+  "DISTotalBoxes": "STotalBoxes-10087501",
+  "MatchedUnits": false,
+  "MatchedVolume": false,
+  "MatchedBoxes": false
+}
+
+
+### ShippedBolCheck
+# @name ShippedBolCheck_DELETE
+DELETE {{server}}/monitoring-service/ShippedBolCheck/pedBolCheck-10087501
+Content-Type: application/json
+
+
+### ShippedConsigneeBOLCheck
+# @name ShippedConsigneeBOLCheck_GET
+GET {{server}}/monitoring-service/ShippedConsigneeBOLCheck
+
+
+
+### ShippedConsigneeBOLCheck
+# @name ShippedConsigneeBOLCheck_POST
+POST {{server}}/monitoring-service/ShippedConsigneeBOLCheck
+Content-Type: application/json
+
+{
+  "PSABolNo": "neeBOLCheck-26307823",
+  "PSAConsigneeNo": "ConsigneeNo-26307823",
+  "DISBlading": "DISBlading-26307823",
+  "DISCustomer": "DISCustomer-26307823",
+  "Matched": false
+}
+
+
+### ShippedConsigneeBOLCheck
+# @name ShippedConsigneeBOLCheck_PATCH
+PATCH {{server}}/monitoring-service/ShippedConsigneeBOLCheck/neeBOLCheck-26307823
+Content-Type: application/json
+
+{
+  "PSABolNo": "neeBOLCheck-26307823",
+  "PSAConsigneeNo": "ConsigneeNo-26307823",
+  "DISBlading": "DISBlading-26307823",
+  "DISCustomer": "DISCustomer-26307823",
+  "Matched": false
+}
+
+
+### ShippedConsigneeBOLCheck
+# @name ShippedConsigneeBOLCheck_DELETE
+DELETE {{server}}/monitoring-service/ShippedConsigneeBOLCheck/neeBOLCheck-26307823
+Content-Type: application/json
+
+
+### PartNumberBOLCheck
+# @name PartNumberBOLCheck_GET
+GET {{server}}/monitoring-service/PartNumberBOLCheck
+
+
+
+### PartNumberBOLCheck
+# @name PartNumberBOLCheck_POST
+POST {{server}}/monitoring-service/PartNumberBOLCheck
+Content-Type: application/json
+
+{
+  "PSABolNo": "berBOLCheck-19776439",
+  "PSAConsigneeNo": "ConsigneeNo-19776439",
+  "DISBlading": "DISBlading-19776439",
+  "DISCustomer": "DISCustomer-19776439",
+  "Matched": false
+}
+
+
+### PartNumberBOLCheck
+# @name PartNumberBOLCheck_PATCH
+PATCH {{server}}/monitoring-service/PartNumberBOLCheck/berBOLCheck-19776439
+Content-Type: application/json
+
+{
+  "PSABolNo": "berBOLCheck-19776439",
+  "PSAConsigneeNo": "ConsigneeNo-19776439",
+  "DISBlading": "DISBlading-19776439",
+  "DISCustomer": "DISCustomer-19776439",
+  "Matched": false
+}
+
+
+### PartNumberBOLCheck
+# @name PartNumberBOLCheck_DELETE
+DELETE {{server}}/monitoring-service/PartNumberBOLCheck/berBOLCheck-19776439
+Content-Type: application/json
+
+
+### MaterialInformationCheck
+# @name MaterialInformationCheck_GET
+GET {{server}}/monitoring-service/MaterialInformationCheck
+
+
+
+### MaterialInformationCheck
+# @name MaterialInformationCheck_POST
+POST {{server}}/monitoring-service/MaterialInformationCheck
+Content-Type: application/json
+
+{
+  "PSABoxNumber": "mationCheck-28213612",
+  "PSAMaterialDescription": "Description-28213612",
+  "DISBoxNumber": "ISBoxNumber-28213612",
+  "DISMaterialDesc": "aterialDesc-28213612",
+  "Matched": true
+}
+
+
+### MaterialInformationCheck
+# @name MaterialInformationCheck_PATCH
+PATCH {{server}}/monitoring-service/MaterialInformationCheck/mationCheck-28213612
+Content-Type: application/json
+
+{
+  "PSABoxNumber": "mationCheck-28213612",
+  "PSAMaterialDescription": "Description-28213612",
+  "DISBoxNumber": "ISBoxNumber-28213612",
+  "DISMaterialDesc": "aterialDesc-28213612",
+  "Matched": true
+}
+
+
+### MaterialInformationCheck
+# @name MaterialInformationCheck_DELETE
+DELETE {{server}}/monitoring-service/MaterialInformationCheck/mationCheck-28213612
+Content-Type: application/json

@@ -1,0 +1,11 @@
+@server=http://localhost:4004
+
+
+### askAI
+# @name askAI_POST
+POST {{server}}/odata/v4/ai/askAI
+Content-Type: application/json
+
+{
+  "prompt": "Explain what SAP CAP is in one paragraph."
+}

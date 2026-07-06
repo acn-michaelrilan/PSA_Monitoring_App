@@ -1,0 +1,70 @@
+<mvc:View
+    controllerName="psamonitoringui.controller.psa-monitoring-view"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page title="Available Box Check">
+
+        <content>
+
+            <Table
+                id="availableBoxTable"
+                growing="true"
+                growingScrollToLoad="true"
+                items="{
+                    path:'/AvailableBoxCheck'
+                }">
+
+                <columns>
+
+                    <Column>
+                        <Text text="PSA Box Number"/>
+                    </Column>
+
+                    <Column>
+                        <Text text="PSA Status"/>
+                    </Column>
+
+                    <Column>
+                        <Text text="DIS Box Number"/>
+                    </Column>
+
+                    <Column>
+                        <Text text="DIS Processed"/>
+                    </Column>
+
+                    <Column>
+                        <Text text="Matched"/>
+                    </Column>
+
+                </columns>
+
+                <items>
+
+                    <ColumnListItem>
+
+                        <cells>
+
+                            <Text text="{PSABoxNumber}"/>
+
+                            <Text text="{PSAStatus}"/>
+
+                            <Text text="{DISBoxNumber}"/>
+
+                            <Text text="{DISProcessed}"/>
+
+                            <Text text="{Matched}"/>
+
+                        </cells>
+
+                    </ColumnListItem>
+
+                </items>
+
+            </Table>
+
+        </content>
+
+    </Page>
+
+</mvc:View>
