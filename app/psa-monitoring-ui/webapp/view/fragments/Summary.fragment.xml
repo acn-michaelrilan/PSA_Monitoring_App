@@ -1,0 +1,27 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <VBox class="sapUiMediumMargin">
+
+        <GenericTile
+            class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+            header="Available Boxes"
+            subheader="Discrepancies"
+            press=".onAvailableBoxesTilePress"
+            state="{summary>/availableBoxCheck/tileState}">
+
+            <TileContent>
+                <NumericContent
+                    scale="Box"
+                    value="{summary>/availableBoxCheck/count}"
+                    valueColor="{summary>/availableBoxCheck/valueColor}"
+                    withMargin="false"
+                    truncateValueTo="6" />
+            </TileContent>
+
+        </GenericTile>
+
+    </VBox>
+
+</core:FragmentDefinition>

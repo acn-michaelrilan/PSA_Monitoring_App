@@ -1,0 +1,48 @@
+
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Table
+        id="availableBoxTable"
+        inset="false"
+        sticky="HeaderToolbar,ColumnHeaders"
+        items="{
+            path:'/AvailableBoxCheck'
+        }"
+        width="auto">
+        <headerToolbar>
+            <Toolbar>
+                <Title text="Available Box Check"/>
+            </Toolbar>
+        </headerToolbar>
+        <columns>
+            <Column>
+                <Text text="PSA Box Number"/>
+            </Column>
+            <Column>
+                <Text text="PSA Status"/>
+            </Column>
+            <Column>
+                <Text text="DIS Box Number"/>
+            </Column>
+            <Column>
+                <Text text="DIS Processed"/>
+            </Column>
+            <Column>
+                <Text text="Matched"/>
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem>
+                <cells>
+                    <Text text="{PSABoxNumber}" />
+                    <Text text="{PSAStatus}" />
+                    <Text text="{DISBoxNumber}" />
+                    <Text text="{DISProcessed}" />
+                    <ObjectStatus
+                        text="{Matched}" />
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+</core:FragmentDefinition>
