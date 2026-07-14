@@ -14,31 +14,15 @@
 
 			<!-- DynamicPage Title -->
 			<f:title>
-				<f:DynamicPageTitle>
+				<f:DynamicPageTitle id="_IDGenDynamicPageTitle1">
 					<f:heading>
-						<Title text="PSA Monitoring Dashboard"/>
+						<Title id="_IDGenTitle3" text="PSA Monitoring Dashboard"/>
 					</f:heading>
 				</f:DynamicPageTitle>
 			</f:title>
-			<!-- DynamicPage Header -->
-			<f:header>
-				<!-- <f:DynamicPageHeader pinnable="true">
-					<layout:HorizontalLayout allowWrapping="true">
-						<layout:VerticalLayout class="sapUiMediumMarginEnd">
-							<ObjectAttribute title="Location" text="Warehouse A"/>
-							<ObjectAttribute title="Halway" text="23L"/>
-							<ObjectAttribute title="Rack" text="34"/>
-						</layout:VerticalLayout>
 
-						<layout:VerticalLayout>
-							<ObjectAttribute title="Availability"/>
-							<ObjectStatus text="In Stock" state="Success" />
-						</layout:VerticalLayout>
-					</layout:HorizontalLayout>
-				</f:DynamicPageHeader> -->
-			</f:header>
 			<f:content>
-				
+			<!-- DynamicPage Header -->			
 			<IconTabBar
 				id="iconTabBar"
 				selectedKey="summary"
@@ -46,17 +30,17 @@
 
 				<items>
 
-					<IconTabFilter
+					<IconTabFilter id="_IDGenIconTabFilter"
 						key="summary"
 						text="Summary">
 
 						<core:Fragment
-							fragmentName="psamonitoringui.view.fragments.Summary"
+							fragmentName="psamonitoringui/view.fragments.Summary"
 							type="XML" />
 
 					</IconTabFilter>
 
-					<IconTabFilter
+					<IconTabFilter id="_IDGenIconTabFilter1"
 						key="availableBoxCheck"
 						text="Available Box Check">
 
@@ -66,42 +50,42 @@
 
 					</IconTabFilter>
 
-					<IconTabFilter
+					<IconTabFilter id="_IDGenIconTabFilter2"
 						key="shippedBol"
 						text="Shipped BOL">
-						<Text text="Shipped BOL content goes here ..." />
+						<core:Fragment
+							fragmentName="psamonitoringui.view.fragments.ShippedBOLCheckTable"
+							type="XML" />
 					</IconTabFilter>
 
-					<IconTabFilter
+					<IconTabFilter id="_IDGenIconTabFilter3"
 						key="shippedConsigneePerBol"
 						text="Shipped Consignee per BOL">
-						<Text text="Shipped Consignee per BOL content goes here ..." />
+						<core:Fragment
+							fragmentName="psamonitoringui.view.fragments.ShippedConsigneeBOLTable"
+							type="XML" />
 					</IconTabFilter>
 
-					<IconTabFilter
+					<IconTabFilter id="_IDGenIconTabFilter4"
 						key="partNumberPerBolCheck"
 						text="Part Number per BOL Check">
-						<Text text="Part Number per BOL Check content goes here ..." />
+						<core:Fragment
+							fragmentName="psamonitoringui.view.fragments.PartNumberBOLCheckTable"
+							type="XML" />
 					</IconTabFilter>
 
-					<IconTabFilter
+					<IconTabFilter id="_IDGenIconTabFilter5"
 						key="materialInformationCheck"
 						text="Material Information Check">
-						<Text text="Material Information Check content goes here ..." />
+						<core:Fragment
+							fragmentName="psamonitoringui.view.fragments.MaterialInformationCheck"
+							type="XML" />
 					</IconTabFilter>
 
 				</items>
 			</IconTabBar>
 
 			</f:content>
-			<!-- DynamicPage Footer -->
-			<f:footer>
-				<OverflowToolbar>
-					<ToolbarSpacer/>
-					<Button type="Accept" text="Accept"/>
-					<Button type="Reject" text="Reject"/>
-				</OverflowToolbar>
-			</f:footer>
 		</f:DynamicPage>
 
 </mvc:View>

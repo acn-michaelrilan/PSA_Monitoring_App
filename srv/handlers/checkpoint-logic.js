@@ -297,10 +297,10 @@ function createCheckpointLogic() {
           return {
             PSABolNo: psaMap.has(bolNumber) ? bolNumber : null,
 
-            PSAConsigneeNo: formatSet(psaParts),
+            PSAPartNumber: formatSet(psaParts),
 
             DISBlading: disMap.has(bolNumber) ? bolNumber : null,
-            DISCustomer: formatSet(disParts),
+            DISPartNumber: formatSet(disParts),
 
             Matched: areSetsEqual(psaParts, disParts)
           };

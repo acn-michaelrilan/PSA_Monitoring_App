@@ -161,24 +161,6 @@ sap.ui.define([
             oPage.setShowFooter(!oPage.getShowFooter());
         },
 
-        onGenericTagPress: function (oEvent) {
-            const oView = this.getView();
-            const oSourceControl = oEvent.getSource();
-
-            if (!this._pPopover) {
-                this._pPopover = Fragment.load({
-                    id: oView.getId(),
-                    name: "psamonitoringui.view.Card"
-                }).then(function (oPopover) {
-                    oView.addDependent(oPopover);
-                    return oPopover;
-                });
-            }
-
-            this._pPopover.then(function (oPopover) {
-                oPopover.openBy(oSourceControl);
-            });
-        }
 
     });
 });

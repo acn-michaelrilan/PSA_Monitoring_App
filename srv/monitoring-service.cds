@@ -1,17 +1,17 @@
 
+using { cuid } from '@sap/cds/common';
 service MonitoringService @(path: '/monitoring-service') {
-
-  entity AvailableBoxCheck {
-   key PSABoxNumber: String(20);
-    PSAStatus: String(20);
+  entity AvailableBoxCheck : cuid {
     DISBoxNumber: String(20);
+    PSAStatus: String(20);
+    PSABoxNumber: String(20);
     DISProcessed: String(20);
     Matched: Boolean;
   }
 
   
-  entity ShippedBolCheck {
-   key PSABolNo: String(20);
+  entity ShippedBolCheck: cuid {
+    PSABolNo: String(20);
     PSATotalUnits: String(20);
     PSATotalVolume: String(20);
     PSATotalBoxes: String(20);
@@ -24,25 +24,25 @@ service MonitoringService @(path: '/monitoring-service') {
     MatchedBoxes: Boolean;
   }
 
-  entity ShippedConsigneeBOLCheck {
-   key PSABolNo: String(20);
+  entity ShippedConsigneeBOLCheck: cuid {
+    PSABolNo: String(20);
     PSAConsigneeNo: String(20);
     DISBlading: String(20);
     DISCustomer: String(20);
     Matched: Boolean;
   }
 
-  entity PartNumberBOLCheck {
-   key PSABolNo: String(20);
-    PSAConsigneeNo: String(20);
+  entity PartNumberBOLCheck:cuid {
+    PSABolNo: String(20);
+    PSAPartNumber: String(20);
     DISBlading: String(20);
-    DISCustomer: String(20);
+    DISPartNumber: String(20);
     Matched: Boolean;
   }
 
 
-  entity MaterialInformationCheck {
-   key PSABoxNumber: String(20);
+  entity MaterialInformationCheck:cuid {
+    PSABoxNumber: String(20);
     PSAMaterialDescription: String(20);
     DISBoxNumber: String(20);
     DISMaterialDesc: String(20);
