@@ -2,21 +2,16 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/core/Fragment",
     "sap/ui/model/json/JSONModel",
-    "sap/m/MessageToast"
-], function (Controller, Fragment, JSONModel, MessageToast) {
+    "sap/m/MessageToast",
+    "psamonitoringui/helper/TileConfig"
+], function (Controller, Fragment, JSONModel, MessageToast, TileConfig) {
     "use strict";
 
     return Controller.extend("psamonitoringui.controller.psa-monitoring-view", {
 
         SERVICE_PATH: "/monitoring-service",
 
-        ENTITY_SETS: {
-            AVAILABLE_BOX_CHECK: "AvailableBoxCheck",
-            SHIPPED_BOL_CHECK: "ShippedBolCheck",
-            SHIPPED_CONSIGNEE_BOL_CHECK: "ShippedConsigneeBOLCheck",
-            PART_NUMBER_BOL_CHECK: "PartNumberBOLCheck",
-            MATERIAL_INFORMATION_CHECK: "MaterialInformationCheck"
-        },
+        TILE_CONFIG: TileConfig,
 
         onInit: function () {
             this._initializeSummaryModel();
@@ -28,43 +23,48 @@ sap.ui.define([
         /* =========================================================== */
 
         _initializeSummaryModel: function () {
-            const oSummaryModel = new JSONModel({
-                availableBoxCheck: {
-                    count: "0",
-                    valueColor: "Neutral",
-                    tileState: "Loading"
-                },
-                shippedBolCheck: {
-                    count: "0",
-                    valueColor: "Neutral",
-                    tileState: "Loading"
-                },
-                shippedConsigneeBOLCheck: {
-                    count: "0",
-                    valueColor: "Neutral",
-                    tileState: "Loading"
-                },
-                partNumberBOLCheck: {
-                    count: "0",
-                    valueColor: "Neutral",
-                    tileState: "Loading"
-                },
-                materialInformationCheck: {
-                    count: "0",
-                    valueColor: "Neutral",
-                    tileState: "Loading"
-                }
-            });
 
-            this.getView().setModel(oSummaryModel, "summary");
+            const oSummaryData = {};
+
+            Object.keys(this.TILE_CONFIG)
+                .forEach(sKey => {
+
+                    oSummaryData[sKey] = {
+                        count: "0",
+                        valueColor: "Neutral",
+                        tileState: "Loading"
+                    };
+
+                });
+
+            this.getView().setModel(
+                new JSONModel(oSummaryData),
+                "summary"
+            );
         },
 
-        _loadSummaryData: function () {
-            this._loadAvailableBoxCheckDiscrepancyCount();
-            this._loadShippedBolCheckDiscrepancyCount();
-            this._loadShippedConsigneeBOLCheckDiscrepancyCount();
-            this._loadPartNumberBOLCheckDiscrepancyCount();
-            this._loadMaterialInformationCheckDiscrepancyCount();
+        _loadSummaryData: async function () {
+            await Promise.all(
+                Object.values(this.TILE_CONFIG)
+                    .map(oTile =>
+                        this._loadTileCount(
+                            oTile.modelPath,
+                            oTile.entitySet,
+                            oTile.filter
+                        )
+                    )
+
+            );
+
+        },
+        _navigateToTab: function (sKey) {
+
+            const oIconTabBar =
+                this.byId("iconTabBar");
+
+            if (oIconTabBar) {
+                oIconTabBar.setSelectedKey(sKey);
+            }
         },
 
         /* =========================================================== */
@@ -124,6 +124,7 @@ sap.ui.define([
                 );
             }
         },
+
         _getDiscrepancyCount: async function (
             sEntitySet,
             sFilter
@@ -152,68 +153,6 @@ sap.ui.define([
             return this._extractCountFromResponse(
                 oData
             );
-        },
-
-        _loadAvailableBoxCheckDiscrepancyCount: function () {
-            return this._loadTileCount(
-                "/availableBoxCheck",
-                this.ENTITY_SETS.AVAILABLE_BOX_CHECK,
-                "Matched eq false"
-            );
-        },
-        _loadShippedBolCheckDiscrepancyCount: function () {
-            return this._loadTileCount(
-                "/shippedBolCheck",
-                this.ENTITY_SETS.SHIPPED_BOL_CHECK,
-                "Matched eq false"
-            );
-        },
-
-        _loadShippedConsigneeBOLCheckDiscrepancyCount: function () {
-            return this._loadTileCount(
-                "/shippedConsigneeBOLCheck",
-                this.ENTITY_SETS.SHIPPED_CONSIGNEE_BOL_CHECK,
-                "Matched eq false"
-            );
-        },
-        _loadPartNumberBOLCheckDiscrepancyCount: function () {
-            return this._loadTileCount(
-                "/partNumberBOLCheck",
-                this.ENTITY_SETS.PART_NUMBER_BOL_CHECK,
-                "Matched eq false"
-            );
-        },
-
-        _loadMaterialInformationCheckDiscrepancyCount: function () {
-            return this._loadTileCount(
-                "/materialInformationCheck",
-                this.ENTITY_SETS.MATERIAL_INFORMATION_CHECK,
-                "Matched eq false"
-            );
-        },
-
-        _getAvailableBoxCheckDiscrepancyCount: async function () {
-            const sFilter = encodeURIComponent("Matched eq false");
-
-            const sUrl =
-                `${this.SERVICE_PATH}/${this.ENTITY_SETS.AVAILABLE_BOX_CHECK}` +
-                `?$filter=${sFilter}&count=true`;
-
-            const oResponse = await fetch(sUrl, {
-                method: "GET",
-                headers: {
-                    "Accept": "application/json"
-                }
-            });
-
-            if (!oResponse.ok) {
-                const sErrorText = await oResponse.text();
-                throw new Error(sErrorText);
-            }
-
-            const oData = await oResponse.json();
-
-            return this._extractCountFromResponse(oData);
         },
 
         _extractCountFromResponse: function (oData) {
@@ -262,42 +201,35 @@ sap.ui.define([
         /* Tile Navigation                                             */
         /* =========================================================== */
 
-        onAvailableBoxesTilePress: function () {
-            const oIconTabBar = this.byId("iconTabBar");
-
-            if (oIconTabBar) {
-                oIconTabBar.setSelectedKey("availableBoxCheck");
-            }
-        },
-        onShippedBolTilePress: function () {
-            const oIconTabBar = this.byId("iconTabBar");
-
-            if (oIconTabBar) {
-                oIconTabBar.setSelectedKey("shippedBol");
-            }
-        },
-        onShippedConsigneeBolTilePress: function () {
-            const oIconTabBar = this.byId("iconTabBar");
-
-            if (oIconTabBar) {
-                oIconTabBar.setSelectedKey("shippedConsigneePerBol");
-            }
-        },
-        onPartNumberBolTilePress: function () {
-            const oIconTabBar = this.byId("iconTabBar");
-
-            if (oIconTabBar) {
-                oIconTabBar.setSelectedKey("partNumberPerBolCheck");
-            }
-        },
-        onMaterialInformationTilePress: function () {
-            const oIconTabBar = this.byId("iconTabBar");
-
-            if (oIconTabBar) {
-                oIconTabBar.setSelectedKey("materialInformationCheck");
-            }
+        onAvailableBoxesTilePress() {
+            this._navigateToTab(
+                this.TILE_CONFIG.availableBoxCheck.tabKey
+            );
         },
 
+        onShippedBolTilePress() {
+            this._navigateToTab(
+                this.TILE_CONFIG.shippedBolCheck.tabKey
+            );
+        },
+
+        onShippedConsigneeBolTilePress() {
+            this._navigateToTab(
+                this.TILE_CONFIG.shippedConsigneeBOLCheck.tabKey
+            );
+        },
+
+        onPartNumberBolTilePress() {
+            this._navigateToTab(
+                this.TILE_CONFIG.partNumberBOLCheck.tabKey
+            );
+        },
+
+        onMaterialInformationTilePress() {
+            this._navigateToTab(
+                this.TILE_CONFIG.materialInformationCheck.tabKey
+            );
+        },
         /* =========================================================== */
         /* Existing Page Helpers                                       */
         /* =========================================================== */
