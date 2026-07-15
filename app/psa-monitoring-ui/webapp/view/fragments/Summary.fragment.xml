@@ -2,7 +2,114 @@
     xmlns="sap.m"
     xmlns:core="sap.ui.core">
 
-    <VBox id="_IDGenVBox" class="sapUiMediumMargin">
+    <HBox wrap="Wrap" class="sapUiMediumMargin">
+
+        <!-- Available Box Check -->
+        <VBox class="sapUiTinyMargin">
+            <GenericTile
+                header="Available Boxes"
+                subheader="Discrepancies"
+                press=".onAvailableBoxesTilePress"
+                state="{summary>/availableBoxCheck/tileState}">
+
+                <TileContent>
+                    <NumericContent
+                        scale="Box"
+                        value="{summary>/availableBoxCheck/count}"
+                        valueColor="{summary>/availableBoxCheck/valueColor}"
+                        withMargin="false"
+                        truncateValueTo="6" />
+                </TileContent>
+
+            </GenericTile>
+        </VBox>
+
+
+        <!-- Shipped BOL Check -->
+        <VBox class="sapUiTinyMargin">
+            <GenericTile
+                header="Shipped BOL"
+                subheader="Discrepancies"
+                press=".onShippedBolTilePress"
+                state="{summary>/shippedBolCheck/tileState}">
+
+                <TileContent>
+                    <NumericContent
+                        scale="BOL"
+                        value="{summary>/shippedBolCheck/count}"
+                        valueColor="{summary>/shippedBolCheck/valueColor}"
+                        withMargin="false"
+                        truncateValueTo="6" />
+                </TileContent>
+
+            </GenericTile>
+        </VBox>
+
+
+        <!-- Shipped Consignee BOL Check -->
+        <VBox class="sapUiTinyMargin">
+            <GenericTile
+                header="Consignee"
+                subheader="BOL Mismatch"
+                press=".onShippedConsigneeBolTilePress"
+                state="{summary>/shippedConsigneeBOLCheck/tileState}">
+
+                <TileContent>
+                    <NumericContent
+                        scale="BOL"
+                        value="{summary>/shippedConsigneeBOLCheck/count}"
+                        valueColor="{summary>/shippedConsigneeBOLCheck/valueColor}"
+                        withMargin="false"
+                        truncateValueTo="6" />
+                </TileContent>
+
+            </GenericTile>
+        </VBox>
+
+
+        <!-- Part Number BOL Check -->
+        <VBox class="sapUiTinyMargin">
+            <GenericTile
+                header="Part Number"
+                subheader="BOL Mismatch"
+                press=".onPartNumberBolTilePress"
+                state="{summary>/partNumberBOLCheck/tileState}">
+
+                <TileContent>
+                    <NumericContent
+                        scale="Part"
+                        value="{summary>/partNumberBOLCheck/count}"
+                        valueColor="{summary>/partNumberBOLCheck/valueColor}"
+                        withMargin="false"
+                        truncateValueTo="6" />
+                </TileContent>
+
+            </GenericTile>
+        </VBox>
+
+
+        <!-- Material Information Check -->
+        <VBox class="sapUiTinyMargin">
+            <GenericTile
+                header="Material Info"
+                subheader="Mismatch"
+                press=".onMaterialInformationTilePress"
+                state="{summary>/materialInformationCheck/tileState}">
+
+                <TileContent>
+                    <NumericContent
+                        scale="Box"
+                        value="{summary>/materialInformationCheck/count}"
+                        valueColor="{summary>/materialInformationCheck/valueColor}"
+                        withMargin="false"
+                        truncateValueTo="6" />
+                </TileContent>
+
+            </GenericTile>
+        </VBox>
+
+    </HBox>
+    <!-- <VBox id="_IDGenVBox" class="sapUiMediumMargin">
 
         <GenericTile id="_IDGenGenericTile1"
             class="sapUiTinyMarginBegin sapUiTinyMarginTop"
@@ -22,6 +129,6 @@
 
         </GenericTile>
 
-    </VBox>
+    </VBox> -->
 
 </core:FragmentDefinition>

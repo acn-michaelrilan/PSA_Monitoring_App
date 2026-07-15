@@ -22,6 +22,7 @@ service MonitoringService @(path: '/monitoring-service') {
     MatchedUnits: Boolean;
     MatchedVolume: Boolean;
     MatchedBoxes: Boolean;
+    Matched: Boolean;
   }
 
   entity ShippedConsigneeBOLCheck: cuid {

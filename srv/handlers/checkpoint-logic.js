@@ -67,11 +67,11 @@ function createCheckpointLogic() {
           result = result.filter(item => item.Matched === matched);
         }
 
-      // Count Mode
+        // Count Mode
         if (count) {
-          return [{
-            Count: result.length
-          }];
+            return {
+                Count: result.length
+            };
         }
         return result;
 
@@ -106,6 +106,23 @@ function createCheckpointLogic() {
           const disTotalUnits = disRecord ? normalize(disRecord.TotalUnits) : null;
           const disTotalVolume = disRecord ? normalize(disRecord.TotalVolume) : null;
           const disTotalBoxes = disRecord ? normalize(disRecord.TotalBoxes) : null;
+          const matchedUnits = Boolean(
+            psaRecord &&
+            disRecord &&
+            psaTotalUnits === disTotalUnits
+          );
+
+          const matchedVolume = Boolean(
+            psaRecord &&
+            disRecord &&
+            psaTotalVolume === disTotalVolume
+          );
+
+          const matchedBoxes = Boolean(
+            psaRecord &&
+            disRecord &&
+            psaTotalBoxes === disTotalBoxes
+          );
 
           return {
             PSABolNo: psaRecord ? normalize(psaRecord.BolNo) : null,
@@ -118,23 +135,14 @@ function createCheckpointLogic() {
             DISTotalVolume: disTotalVolume,
             DISTotalBoxes: disTotalBoxes,
 
-            MatchedUnits: Boolean(
-              psaRecord &&
-              disRecord &&
-              psaTotalUnits === disTotalUnits
-            ),
+            MatchedUnits: matchedUnits,
+            MatchedVolume: matchedVolume,
+            MatchedBoxes: matchedBoxes,
 
-            MatchedVolume: Boolean(
-              psaRecord &&
-              disRecord &&
-              psaTotalVolume === disTotalVolume
-            ),
-
-            MatchedBoxes: Boolean(
-              psaRecord &&
-              disRecord &&
-              psaTotalBoxes === disTotalBoxes
-            )
+            Matched:
+              matchedUnits &&
+              matchedVolume &&
+              matchedBoxes
           };
         });
 
@@ -152,6 +160,7 @@ function createCheckpointLogic() {
 
         // Filter fields
         const filterFields = [
+          'Matched',
           'MatchedUnits',
           'MatchedVolume',
           'MatchedBoxes'
