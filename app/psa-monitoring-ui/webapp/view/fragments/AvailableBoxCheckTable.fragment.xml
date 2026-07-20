@@ -12,7 +12,26 @@
         width="auto">
         <headerToolbar>
             <Toolbar id="availableBoxToolbar">
-                <Title id="_IDGenTitle" text="Available Box Check"/>
+
+                <Title id="_IDGenTitle4"
+                    text="Available Box Check"/>
+
+                <ToolbarSpacer id="_IDGenToolbarSpacer"/>
+
+                <Button id="_IDGenButton"
+                    text="AI Assistant"
+                    icon="sap-icon://ai"
+                    type="Emphasized"
+                    press=".onAIPress">
+                    <customData>
+                        <core:CustomData
+                            key="tileKey"
+                            value="availableBoxCheck"/>
+                    </customData>
+
+                </Button>
+
+
             </Toolbar>
         </headerToolbar>
         <columns>

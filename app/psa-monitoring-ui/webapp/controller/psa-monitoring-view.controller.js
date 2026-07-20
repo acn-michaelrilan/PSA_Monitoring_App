@@ -57,6 +57,7 @@ sap.ui.define([
             );
 
         },
+        
         _navigateToTab: function (sKey) {
 
             const oIconTabBar =
@@ -123,6 +124,14 @@ sap.ui.define([
                     "Failed"
                 );
             }
+        },
+
+        _getAppController: function () {
+
+            return this.getOwnerComponent()
+                .getRootControl()
+                .getController();
+
         },
 
         _getDiscrepancyCount: async function (
@@ -233,6 +242,29 @@ sap.ui.define([
         /* =========================================================== */
         /* Existing Page Helpers                                       */
         /* =========================================================== */
+
+        onAIPress: function (oEvent) {
+
+            const sTileKey =
+                oEvent.getSource().data("tileKey");
+
+            const oConfig =
+                this.TILE_CONFIG[sTileKey];
+
+            // Build a placeholder response (replace later with real AI call)
+            const sResponse =
+                `<p>This is a <strong>placeholder</strong> AI response for checkpoint ` +
+                `<em>${sTileKey}</em>.</p>` +
+                `<p>The actual AI-generated analysis will appear here once the ` +
+                `backend integration is complete.</p>`;
+
+            this._getAppController()
+                .navigateToAI(
+                    `AI Assistant for ${oConfig.title}`,
+                    sTileKey,
+                    sResponse   // third argument
+                );
+        },
 
         getPage: function () {
             return this.byId("dynamicPageId");

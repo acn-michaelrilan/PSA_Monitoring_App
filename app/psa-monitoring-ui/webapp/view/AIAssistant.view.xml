@@ -1,0 +1,61 @@
+<mvc:View
+    controllerName="psamonitoringui.controller.AIAssistant"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+
+    <Page id="aiAssistantPage"
+        title="{ai>/title}"
+        showNavButton="true"
+        navButtonPress=".onBack"
+        enableScrolling="false">
+
+        <content>
+
+            <ScrollContainer
+                id="aiScrollContainer"
+                height="100%"
+                width="100%"
+                horizontal="false"
+                vertical="true"
+                focusable="true">
+
+                <VBox id="aiContentBox"
+                    class="sapUiLargeMargin"
+                    width="auto">
+
+                    <!-- Divider -->
+                    <core:Icon id="aiDivider"
+                        src="sap-icon://horizontal-bar-chart"
+                        visible="false"/>
+
+                    <!-- AI Response Section -->
+                    <Panel id="aiResponsePanel"
+                        headerText="AI Analysis"
+                        expandable="false"
+                        class="sapUiResponsiveMargin">
+
+                        <content>
+
+                            <VBox id="aiResponseBox"
+                                class="sapUiSmallMargin">
+
+                                <FormattedText id="aiResponseText"
+                                    htmlText="{ai>/response}"
+                                    width="100%"/>
+
+                            </VBox>
+
+                        </content>
+
+                    </Panel>
+
+                </VBox>
+
+            </ScrollContainer>
+
+        </content>
+
+    </Page>
+
+</mvc:View>

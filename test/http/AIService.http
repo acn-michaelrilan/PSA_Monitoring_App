@@ -1,11 +1,78 @@
 @server=http://localhost:4004
 
 
+### Search
+# @name Search_GET
+GET {{server}}/odata/v4/ai/Search
+
+
+
+### Search
+# @name Search_POST
+POST {{server}}/odata/v4/ai/Search
+Content-Type: application/json
+
+{
+  "ID": "31686935-da92-4e0f-8999-774f274603e0",
+  "title": "title-31686935",
+  "discrepancy_data": "discrepancy_data-31686935",
+  "resolution": "resolution-31686935",
+  "query": "query-31686935",
+  "cosine_similarity": "cosine_similarity-31686935",
+  "l2distance": 25.58101235754308
+}
+
+
+### Search
+# @name Search_PATCH
+PATCH {{server}}/odata/v4/ai/Search/31686935-da92-4e0f-8999-774f274603e0
+Content-Type: application/json
+
+{
+  "ID": "31686935-da92-4e0f-8999-774f274603e0",
+  "title": "title-31686935",
+  "discrepancy_data": "discrepancy_data-31686935",
+  "resolution": "resolution-31686935",
+  "query": "query-31686935",
+  "cosine_similarity": "cosine_similarity-31686935",
+  "l2distance": 25.58101235754308
+}
+
+
+### Search
+# @name Search_DELETE
+DELETE {{server}}/odata/v4/ai/Search/31686935-da92-4e0f-8999-774f274603e0
+Content-Type: application/json
+
+
 ### askAI
 # @name askAI_POST
 POST {{server}}/odata/v4/ai/askAI
 Content-Type: application/json
 
 {
-  "prompt": "Explain what SAP CAP is in one paragraph."
+  "prompt": "prompt-26995754"
+}
+
+
+### insertCheckpointEmbedding
+# @name insertCheckpointEmbedding_POST
+### insertCheckpointEmbedding
+POST {{server}}/odata/v4/ai/insertCheckpointEmbedding
+Content-Type: application/json
+
+{
+  "title": "Available Box Check",
+  "resolution": "Fetch all boxes from DIS where Processed = 6 and Verified = true. Compare the total available box count between DIS and PSA. If the counts do not match, identify the specific box numbers that exist in DIS but are missing in PSA, and vice versa. Validate whether the missing boxes were not loaded into PSA, were incorrectly marked as unavailable, or were removed due to downstream processing issues. Reprocess or synchronize the affected box records to ensure both systems contain the same set of available boxes.",
+  "discrepancy_data": "{\"PSABoxNumber\":null,\"PSAStatus\":null,\"DISBoxNumber\":\"BOX-0002\",\"DISProcessed\":\"6\",\"Matched\":false}"
+}
+
+### analyzeDiscrepancy
+# @name analyzeDiscrepancy_POST
+POST {{server}}/odata/v4/ai/analyzeDiscrepancy
+Content-Type: application/json
+
+{
+  "title": "Available Box Check",
+  "discrepancy_data": "{\"PSABoxNumber\":null,\"DISBoxNumber\":\"BOX-0001\",\"DISProcessed\":\"6\",\"Matched\":false}"
 }
