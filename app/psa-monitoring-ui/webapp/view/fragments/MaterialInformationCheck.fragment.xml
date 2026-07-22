@@ -1,0 +1,65 @@
+
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Table
+        id="materialInformationCheckTable"
+        inset="false"
+        sticky="HeaderToolbar,ColumnHeaders"
+        items="{
+            path:'/MaterialInformationCheck'
+        }"
+        width="auto">
+        <headerToolbar>
+            <Toolbar id="materialInformationCheckToolbar">
+                <Title id="materialInformationCheckTitle" text="Material Information Check"/>
+            </Toolbar>
+        </headerToolbar>
+        <columns>
+            <!-- PSA  -->
+            <Column id="materialInformationCheckColumnPsaBolNumber">
+                <Text id="materialInformationCheckHeaderPsaBolNumberText" text="{i18n>PSABolNumber}"/>
+            </Column>
+             <Column id="materialInformationCheckColumnPsaPartNumber">
+                <Text id="materialInformationCheckHeaderPsaTotalUnitsText" text="{i18n>PSAMaterialDescription}"/>
+            </Column>
+            <!-- DIS  -->
+            <Column id="materialInformationCheckColumnDisBlading">
+                <Text id="materialInformationCheckHeaderDisBolNumberText" text="{i18n>DISBoxNumber}"/>
+            </Column>
+            <Column id="materialInformationCheckColumnDisPartNumber">
+                <Text id="materialInformationCheckHeaderDisPartNumberText" text="{i18n>DISMaterialDescription}"/>
+            </Column>
+
+            <!-- Matched Columns -->
+            <Column id="materialInformationCheckColumnMatched">
+                <Text id="materialInformationCheckHeaderMatchedText" text="{i18n>Matched}"/>
+            </Column>
+        </columns>
+        <items>
+            
+        <ColumnListItem id="materialInformationCheckColumnListItem">
+            <cells>
+                
+                <!-- PSA -->
+                <Text id="materialInformationCheckCellPsaBolNo" text="{PSABoxNumber}" />
+                <Text id="materialInformationCheckCellPsaPartNumber" text="{PSAMaterialDescription}" />
+
+                <!-- DIS -->
+                <Text id="materialInformationCheckCellDisBlading" text="{DISBoxNumber}" />
+                <Text id="materialInformationCheckCellDisPartNumber" text="{DISMaterialDesc}" />
+
+                <!-- Matched Units -->
+                    <ObjectStatus id="materialInformationCheckStatusMatchedUnits"
+                        text="{= ${Matched} === 'Yes' ? 'Matched' : 'Unmatched' }"
+                        state="{= ${Matched} === 'Yes' ? 'Success' : 'Error' }"
+                        icon="{= ${Matched} === 'Yes'
+                            ? 'sap-icon://accept'
+                            : 'sap-icon://alert' }"/>
+
+            </cells>
+        </ColumnListItem>
+
+        </items>
+    </Table>
+</core:FragmentDefinition>

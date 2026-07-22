@@ -13,31 +13,33 @@ POST {{server}}/monitoring-service/AvailableBoxCheck
 Content-Type: application/json
 
 {
-  "PSABoxNumber": "ableBoxCheck-9441763",
-  "PSAStatus": "PSAStatus-9441763",
-  "DISBoxNumber": "DISBoxNumber-9441763",
-  "DISProcessed": "DISProcessed-9441763",
+  "ID": "92303712-158f-4618-950e-e994ab0d87f1",
+  "DISBoxNumber": "DISBoxNumber-9230371",
+  "PSAStatus": "PSAStatus-9230371",
+  "PSABoxNumber": "PSABoxNumber-9230371",
+  "DISProcessed": "DISProcessed-9230371",
   "Matched": false
 }
 
 
 ### AvailableBoxCheck
 # @name AvailableBoxCheck_PATCH
-PATCH {{server}}/monitoring-service/AvailableBoxCheck/ableBoxCheck-9441763
+PATCH {{server}}/monitoring-service/AvailableBoxCheck/92303712-158f-4618-950e-e994ab0d87f1
 Content-Type: application/json
 
 {
-  "PSABoxNumber": "ableBoxCheck-9441763",
-  "PSAStatus": "PSAStatus-9441763",
-  "DISBoxNumber": "DISBoxNumber-9441763",
-  "DISProcessed": "DISProcessed-9441763",
+  "ID": "92303712-158f-4618-950e-e994ab0d87f1",
+  "DISBoxNumber": "DISBoxNumber-9230371",
+  "PSAStatus": "PSAStatus-9230371",
+  "PSABoxNumber": "PSABoxNumber-9230371",
+  "DISProcessed": "DISProcessed-9230371",
   "Matched": false
 }
 
 
 ### AvailableBoxCheck
 # @name AvailableBoxCheck_DELETE
-DELETE {{server}}/monitoring-service/AvailableBoxCheck/ableBoxCheck-9441763
+DELETE {{server}}/monitoring-service/AvailableBoxCheck/92303712-158f-4618-950e-e994ab0d87f1
 Content-Type: application/json
 
 
@@ -53,43 +55,47 @@ POST {{server}}/monitoring-service/ShippedBolCheck
 Content-Type: application/json
 
 {
-  "PSABolNo": "pedBolCheck-10087501",
-  "PSATotalUnits": "ATotalUnits-10087501",
-  "PSATotalVolume": "TotalVolume-10087501",
-  "PSATotalBoxes": "ATotalBoxes-10087501",
-  "DISBlading": "DISBlading-10087501",
-  "DISTotalUnits": "STotalUnits-10087501",
-  "DISTotalVolume": "TotalVolume-10087501",
-  "DISTotalBoxes": "STotalBoxes-10087501",
-  "MatchedUnits": false,
-  "MatchedVolume": false,
-  "MatchedBoxes": false
+  "ID": "23946099-8d69-49c9-bf29-b8fd03e17f39",
+  "PSABolNo": "PSABolNo-239460",
+  "PSATotalUnits": "PSATotalUnits-239460",
+  "PSATotalVolume": "SATotalVolume-239460",
+  "PSATotalBoxes": "PSATotalBoxes-239460",
+  "DISBlading": "DISBlading-239460",
+  "DISTotalUnits": "DISTotalUnits-239460",
+  "DISTotalVolume": "ISTotalVolume-239460",
+  "DISTotalBoxes": "DISTotalBoxes-239460",
+  "MatchedUnits": true,
+  "MatchedVolume": true,
+  "MatchedBoxes": true,
+  "Matched": true
 }
 
 
 ### ShippedBolCheck
 # @name ShippedBolCheck_PATCH
-PATCH {{server}}/monitoring-service/ShippedBolCheck/pedBolCheck-10087501
+PATCH {{server}}/monitoring-service/ShippedBolCheck/23946099-8d69-49c9-bf29-b8fd03e17f39
 Content-Type: application/json
 
 {
-  "PSABolNo": "pedBolCheck-10087501",
-  "PSATotalUnits": "ATotalUnits-10087501",
-  "PSATotalVolume": "TotalVolume-10087501",
-  "PSATotalBoxes": "ATotalBoxes-10087501",
-  "DISBlading": "DISBlading-10087501",
-  "DISTotalUnits": "STotalUnits-10087501",
-  "DISTotalVolume": "TotalVolume-10087501",
-  "DISTotalBoxes": "STotalBoxes-10087501",
-  "MatchedUnits": false,
-  "MatchedVolume": false,
-  "MatchedBoxes": false
+  "ID": "23946099-8d69-49c9-bf29-b8fd03e17f39",
+  "PSABolNo": "PSABolNo-239460",
+  "PSATotalUnits": "PSATotalUnits-239460",
+  "PSATotalVolume": "SATotalVolume-239460",
+  "PSATotalBoxes": "PSATotalBoxes-239460",
+  "DISBlading": "DISBlading-239460",
+  "DISTotalUnits": "DISTotalUnits-239460",
+  "DISTotalVolume": "ISTotalVolume-239460",
+  "DISTotalBoxes": "DISTotalBoxes-239460",
+  "MatchedUnits": true,
+  "MatchedVolume": true,
+  "MatchedBoxes": true,
+  "Matched": true
 }
 
 
 ### ShippedBolCheck
 # @name ShippedBolCheck_DELETE
-DELETE {{server}}/monitoring-service/ShippedBolCheck/pedBolCheck-10087501
+DELETE {{server}}/monitoring-service/ShippedBolCheck/23946099-8d69-49c9-bf29-b8fd03e17f39
 Content-Type: application/json
 
 
@@ -105,31 +111,33 @@ POST {{server}}/monitoring-service/ShippedConsigneeBOLCheck
 Content-Type: application/json
 
 {
-  "PSABolNo": "neeBOLCheck-26307823",
-  "PSAConsigneeNo": "ConsigneeNo-26307823",
-  "DISBlading": "DISBlading-26307823",
-  "DISCustomer": "DISCustomer-26307823",
-  "Matched": false
+  "ID": "17957908-abb3-4e58-a0e5-3b8ba37fd272",
+  "PSABolNo": "PSABolNo-17957908",
+  "PSAConsigneeNo": "ConsigneeNo-17957908",
+  "DISBlading": "DISBlading-17957908",
+  "DISCustomer": "DISCustomer-17957908",
+  "Matched": true
 }
 
 
 ### ShippedConsigneeBOLCheck
 # @name ShippedConsigneeBOLCheck_PATCH
-PATCH {{server}}/monitoring-service/ShippedConsigneeBOLCheck/neeBOLCheck-26307823
+PATCH {{server}}/monitoring-service/ShippedConsigneeBOLCheck/17957908-abb3-4e58-a0e5-3b8ba37fd272
 Content-Type: application/json
 
 {
-  "PSABolNo": "neeBOLCheck-26307823",
-  "PSAConsigneeNo": "ConsigneeNo-26307823",
-  "DISBlading": "DISBlading-26307823",
-  "DISCustomer": "DISCustomer-26307823",
-  "Matched": false
+  "ID": "17957908-abb3-4e58-a0e5-3b8ba37fd272",
+  "PSABolNo": "PSABolNo-17957908",
+  "PSAConsigneeNo": "ConsigneeNo-17957908",
+  "DISBlading": "DISBlading-17957908",
+  "DISCustomer": "DISCustomer-17957908",
+  "Matched": true
 }
 
 
 ### ShippedConsigneeBOLCheck
 # @name ShippedConsigneeBOLCheck_DELETE
-DELETE {{server}}/monitoring-service/ShippedConsigneeBOLCheck/neeBOLCheck-26307823
+DELETE {{server}}/monitoring-service/ShippedConsigneeBOLCheck/17957908-abb3-4e58-a0e5-3b8ba37fd272
 Content-Type: application/json
 
 
@@ -145,31 +153,33 @@ POST {{server}}/monitoring-service/PartNumberBOLCheck
 Content-Type: application/json
 
 {
-  "PSABolNo": "berBOLCheck-19776439",
-  "PSAConsigneeNo": "ConsigneeNo-19776439",
-  "DISBlading": "DISBlading-19776439",
-  "DISCustomer": "DISCustomer-19776439",
+  "ID": "14203797-64dc-4b8b-8a17-41c52aa1d8e3",
+  "PSABolNo": "PSABolNo-14203797",
+  "PSAPartNumber": "APartNumber-14203797",
+  "DISBlading": "DISBlading-14203797",
+  "DISPartNumber": "SPartNumber-14203797",
   "Matched": false
 }
 
 
 ### PartNumberBOLCheck
 # @name PartNumberBOLCheck_PATCH
-PATCH {{server}}/monitoring-service/PartNumberBOLCheck/berBOLCheck-19776439
+PATCH {{server}}/monitoring-service/PartNumberBOLCheck/14203797-64dc-4b8b-8a17-41c52aa1d8e3
 Content-Type: application/json
 
 {
-  "PSABolNo": "berBOLCheck-19776439",
-  "PSAConsigneeNo": "ConsigneeNo-19776439",
-  "DISBlading": "DISBlading-19776439",
-  "DISCustomer": "DISCustomer-19776439",
+  "ID": "14203797-64dc-4b8b-8a17-41c52aa1d8e3",
+  "PSABolNo": "PSABolNo-14203797",
+  "PSAPartNumber": "APartNumber-14203797",
+  "DISBlading": "DISBlading-14203797",
+  "DISPartNumber": "SPartNumber-14203797",
   "Matched": false
 }
 
 
 ### PartNumberBOLCheck
 # @name PartNumberBOLCheck_DELETE
-DELETE {{server}}/monitoring-service/PartNumberBOLCheck/berBOLCheck-19776439
+DELETE {{server}}/monitoring-service/PartNumberBOLCheck/14203797-64dc-4b8b-8a17-41c52aa1d8e3
 Content-Type: application/json
 
 
@@ -185,29 +195,31 @@ POST {{server}}/monitoring-service/MaterialInformationCheck
 Content-Type: application/json
 
 {
-  "PSABoxNumber": "mationCheck-28213612",
-  "PSAMaterialDescription": "Description-28213612",
-  "DISBoxNumber": "ISBoxNumber-28213612",
-  "DISMaterialDesc": "aterialDesc-28213612",
+  "ID": "1679832e-2b07-4541-aaf2-2cc705aa0ce0",
+  "PSABoxNumber": "PSABoxNumber-1679832",
+  "PSAMaterialDescription": "lDescription-1679832",
+  "DISBoxNumber": "DISBoxNumber-1679832",
+  "DISMaterialDesc": "MaterialDesc-1679832",
   "Matched": true
 }
 
 
 ### MaterialInformationCheck
 # @name MaterialInformationCheck_PATCH
-PATCH {{server}}/monitoring-service/MaterialInformationCheck/mationCheck-28213612
+PATCH {{server}}/monitoring-service/MaterialInformationCheck/1679832e-2b07-4541-aaf2-2cc705aa0ce0
 Content-Type: application/json
 
 {
-  "PSABoxNumber": "mationCheck-28213612",
-  "PSAMaterialDescription": "Description-28213612",
-  "DISBoxNumber": "ISBoxNumber-28213612",
-  "DISMaterialDesc": "aterialDesc-28213612",
+  "ID": "1679832e-2b07-4541-aaf2-2cc705aa0ce0",
+  "PSABoxNumber": "PSABoxNumber-1679832",
+  "PSAMaterialDescription": "lDescription-1679832",
+  "DISBoxNumber": "DISBoxNumber-1679832",
+  "DISMaterialDesc": "MaterialDesc-1679832",
   "Matched": true
 }
 
 
 ### MaterialInformationCheck
 # @name MaterialInformationCheck_DELETE
-DELETE {{server}}/monitoring-service/MaterialInformationCheck/mationCheck-28213612
+DELETE {{server}}/monitoring-service/MaterialInformationCheck/1679832e-2b07-4541-aaf2-2cc705aa0ce0
 Content-Type: application/json

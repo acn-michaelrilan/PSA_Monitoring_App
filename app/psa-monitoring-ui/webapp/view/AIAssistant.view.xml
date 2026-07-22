@@ -1,0 +1,83 @@
+<mvc:View
+    controllerName="psamonitoringui.controller.AIAssistant"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+
+    <Page id="aiAssistantPage"
+        title="{ai>/title}"
+        showNavButton="true"
+        navButtonPress=".onBack"
+        enableScrolling="false">
+
+        <content>
+
+            <ScrollContainer
+                id="aiScrollContainer"
+                height="100%"
+                width="100%"
+                horizontal="false"
+                vertical="true"
+                focusable="true">
+
+                <VBox id="aiContentBox"
+                    class="sapUiLargeMargin"
+                    width="auto">
+
+                    <!-- AI Response Section -->
+                    <Panel id="aiResponsePanel"
+                        expandable="false"
+                        class="sapUiResponsiveMargin"
+                        busy="{ai>/busy}">
+
+                        <headerToolbar>
+                            <Toolbar id="aiPanelToolbar">
+                                <Title id="aiPanelTitle"
+                                    text="{i18n>aiPanelTitle}"
+                                    level="H3"/>
+                                <ToolbarSpacer id="aiPanelSpacer"/>
+                                
+                                <!-- Refresh Button -->
+                                <Button id="aiRefreshBtn"
+                                    text="Refresh"
+                                    icon="sap-icon://refresh"
+                                    type="Transparent"
+                                    tooltip="{i18n>aiRefreshButtonTooltip}"
+                                    enabled="{= !${ai>/busy} &amp;&amp; ${ai>/hasDiscrepancies} }"
+                                    press=".onRefresh"/>
+
+                                <!-- Resolution Feedback Button -->
+                                <Button id="aiResolutionFeedbackBtn"
+                                    text="{i18n>aiFeedbackButtonText}"
+                                    icon="sap-icon://save"
+                                    type="Transparent"
+                                    tooltip="{i18n>aiFeedbackButtonTooltip}"
+                                    enabled="{= !${ai>/busy} &amp;&amp; ${ai>/hasDiscrepancies} }"
+                                    press=".onOpenAIResolutionFeedback"/>
+                            </Toolbar>
+                        </headerToolbar>
+
+                        <content>
+
+                            <VBox id="aiResponseBox"
+                                class="sapUiSmallMargin">
+
+                                <FormattedText id="aiResponseText"
+                                    htmlText="{ai>/response}"
+                                    width="100%"/>
+
+                            </VBox>
+
+                        </content>
+
+                    </Panel>
+
+                </VBox>
+
+            </ScrollContainer>
+
+        </content>
+
+    </Page>
+
+</mvc:View>
