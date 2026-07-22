@@ -1,0 +1,76 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <Dialog id="aiResolutionFeedbackDialog"
+        title="AI Resolution Feedback"
+        contentWidth="520px"
+        contentHeight="auto"
+        resizable="true"
+        draggable="true">
+
+        <content>
+            <VBox id="feedbackFormBox" class="sapUiSmallMargin">
+
+                <!-- Title (read-only) -->
+                <Label id="feedbackTitleLabel"
+                    text="Checkpoint"
+                    labelFor="feedbackTitleInput"/>
+                <Input id="feedbackTitleInput"
+                    value="{feedback>/title}"
+                    editable="false"
+                    width="100%"/>
+
+                <!-- Root Cause -->
+                <Label id="feedbackRootCauseLabel"
+                    text="Root Cause"
+                    required="true"
+                    labelFor="feedbackRootCauseInput"
+                    class="sapUiSmallMarginTop"/>
+                <TextArea id="feedbackRootCauseInput"
+                    value="{feedback>/rootCause}"
+                    maxLength="200"
+                    showExceededText="true"
+                    rows="3"
+                    growing="true"
+                    growingMaxLines="5"
+                    width="100%"
+                    placeholder="Describe the root cause (max 200 characters)..."/>
+
+                <!-- Resolution -->
+                <Label id="feedbackResolutionLabel"
+                    text="Resolution"
+                    required="true"
+                    labelFor="feedbackResolutionInput"
+                    class="sapUiSmallMarginTop"/>
+                <TextArea id="feedbackResolutionInput"
+                    value="{feedback>/resolution}"
+                    maxLength="600"
+                    showExceededText="true"
+                    rows="6"
+                    growing="true"
+                    growingMaxLines="10"
+                    width="100%"
+                    placeholder="Describe the resolution steps (max 600 characters)..."/>
+
+            </VBox>
+        </content>
+
+        <beginButton>
+            <Button id="feedbackSubmitBtn"
+                text="Save"
+                type="Emphasized"
+                icon="sap-icon://save"
+                enabled="{= !!${feedback>/rootCause} &amp;&amp; !!${feedback>/resolution} }"
+                press=".onAIResolutionFeedbackSubmit"/>
+        </beginButton>
+
+        <endButton>
+            <Button id="feedbackCancelBtn"
+                text="Cancel"
+                press=".onAIResolutionFeedbackCancel"/>
+        </endButton>
+
+    </Dialog>
+
+</core:FragmentDefinition>

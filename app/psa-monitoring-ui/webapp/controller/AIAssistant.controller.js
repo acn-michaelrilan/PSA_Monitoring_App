@@ -1,8 +1,10 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
+    "sap/ui/core/Fragment",  
+    "sap/ui/model/json/JSONModel",
     "sap/m/MessageToast",
     "psamonitoringui/helper/TileConfig"
-], function (Controller, MessageToast, TileConfig) {
+], function (Controller, Fragment, JSONModel, MessageToast, TileConfig) {
     "use strict";
 
     return Controller.extend("psamonitoringui.controller.AIAssistant", {
@@ -49,9 +51,15 @@ sap.ui.define([
                     return;
                 }
 
+                // Serialize once, reuse for both AI call and feedback dialog
+                const sDiscrepancyData = JSON.stringify(aRows, null, 2);
+
+                //  Save for later use by the Feedback dialog
+                oAIModel.setProperty("/lastDiscrepancyData", sDiscrepancyData);
+
                 const sAiRaw = await this._callAnalyzeDiscrepancy(
                     sPromptKey,
-                    JSON.stringify(aRows, null, 2)
+                    sDiscrepancyData
                 );
 
                 this._updateResponse(this._markdownToHtml(sAiRaw));
@@ -62,6 +70,97 @@ sap.ui.define([
                 this._updateResponse(
                     `<p style="color:red;">AI analysis failed: ${oErr.message}</p>`
                 );
+            }
+        },
+
+        /* =========================================================== */
+        /* AI Resolution Feedback Dialog                               */
+        /* =========================================================== */
+
+        onOpenAIResolutionFeedback: async function () {
+            const oAIModel = this.getOwnerComponent().getModel("ai");
+            const sTileKey = oAIModel.getProperty("/lastTileKey");
+            const oConfig  = TileConfig[sTileKey];
+
+            if (!oConfig) {
+                MessageToast.show("No active checkpoint.");
+                return;
+            }
+
+            // Fresh model for the dialog form — use promptKey since that's the backend title
+            const oView = this.getView();
+            oView.setModel(
+                new JSONModel({
+                    title:      oConfig.promptKey || oConfig.title,
+                    rootCause:  "",
+                    resolution: ""
+                }),
+                "feedback"
+            );
+
+            // Lazy-load & cache the dialog
+            if (!this._pFeedbackDialog) {
+                this._pFeedbackDialog = Fragment.load({
+                    id: oView.getId(),
+                    name: "psamonitoringui.view.fragments.AIResolutionFeedbackDialog",
+                    controller: this
+                }).then(oDialog => {
+                    oView.addDependent(oDialog);
+                    return oDialog;
+                });
+            }
+
+            const oDialog = await this._pFeedbackDialog;
+            oDialog.open();
+        },
+
+        onAIResolutionFeedbackCancel: function () {
+            this.byId("aiResolutionFeedbackDialog").close();
+        },
+
+        onAIResolutionFeedbackSubmit: async function () {
+            const oFeedbackModel = this.getView().getModel("feedback");
+            const oAIModel       = this.getOwnerComponent().getModel("ai");
+
+            const sTitle      = oFeedbackModel.getProperty("/title");
+            const sRootCause  = (oFeedbackModel.getProperty("/rootCause")  || "").trim();
+            const sResolution = (oFeedbackModel.getProperty("/resolution") || "").trim();
+
+            if (!sRootCause || !sResolution) {
+                MessageToast.show("Please fill in both Root Cause and Resolution.");
+                return;
+            }
+
+            // Concatenate into one resolution string
+            const sCombinedResolution =
+                `**Root Cause:** ${sRootCause}\n\n**Resolution:** ${sResolution}`;
+
+            // Pull the current discrepancy_data captured during the last analysis
+            const sDiscrepancyData =
+                oAIModel.getProperty("/lastDiscrepancyData") || "";
+
+            const oDialog = this.byId("aiResolutionFeedbackDialog");
+            oDialog.setBusy(true);
+
+            try {
+                await this._callInsertCheckpointEmbedding(
+                    sTitle,
+                    sCombinedResolution,
+                    sDiscrepancyData
+                );
+
+                MessageToast.show("Feedback saved successfully ✅");
+                oDialog.close();
+
+                // Reset form so next open is clean
+                oFeedbackModel.setProperty("/rootCause",  "");
+                oFeedbackModel.setProperty("/resolution", "");
+
+            } catch (oErr) {
+                console.error("Save feedback failed:", oErr);
+                MessageToast.show(`Save failed: ${oErr.message}`);
+            } finally {
+                oDialog.setBusy(false);
             }
         },
 
@@ -113,6 +212,31 @@ sap.ui.define([
                 },
                 body: JSON.stringify({
                     title: sTitle,
+                    discrepancy_data: sDiscrepancyData
+                })
+            });
+
+            if (!oRes.ok) {
+                const sErr = await oRes.text();
+                throw new Error(sErr || `HTTP ${oRes.status}`);
+            }
+
+            const oData = await oRes.json();
+            return oData.value ?? oData ?? "";
+        },
+
+        _callInsertCheckpointEmbedding: async function (sTitle, sResolution, sDiscrepancyData) {
+            const sUrl = "/odata/v4/ai/insertCheckpointEmbedding";
+
+            const oRes = await fetch(sUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json"
+                },
+                body: JSON.stringify({
+                    title:            sTitle,
+                    resolution:       sResolution,
                     discrepancy_data: sDiscrepancyData
                 })
             });

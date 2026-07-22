@@ -1,7 +1,5 @@
 const axios = require('axios');
-
-const GROQ_URL   = "https://api.groq.com/openai/v1/chat/completions";
-const GROQ_MODEL = process.env.GROQ_MODEL || "llama-3.3-70b-versatile";
+const { GROQ_URL, GROQ_MODEL } = require('./constants');
 
 /**
  * Calls Groq chat completion with a single user prompt.

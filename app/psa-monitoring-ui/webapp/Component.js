@@ -32,7 +32,7 @@ sap.ui.define([
                     response: "",
                     busy: false,
                     lastTileKey: "",
-                    lastPromptKey: ""
+                    lastDiscrepancyData: "" 
                 }),
                 "ai"
             );

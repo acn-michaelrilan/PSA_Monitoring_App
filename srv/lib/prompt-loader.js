@@ -7,7 +7,7 @@ const PROMPTS_DIR = path.join(__dirname, '..', 'prompts');
 /**
  * Loads a prompt template by checkpoint title and fills in placeholders.
  * @param {string} title - Checkpoint title (e.g., "Available Box Check")
- * @param {object} vars  - Key/value pairs to substitute {{key}} → value
+ * @param {object} vars  - Key/value pairs to substitute {{key}} with 
  * @returns {string} Rendered prompt
  */
 function loadPrompt(title, vars = {}) {

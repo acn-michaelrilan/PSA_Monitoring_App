@@ -1,12 +1,7 @@
-using { cuid } from '@sap/cds/common';
 using {psamonitoring.db as db} from '../db/schema';
 
 
 service AIService {
-
-    action askAI(
-        prompt : String
-    ) returns String;
 
     action insertCheckpointEmbedding(
         title : String,

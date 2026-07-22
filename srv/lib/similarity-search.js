@@ -1,11 +1,12 @@
 const cds = require('@sap/cds');
-
+const { SIMILARITY_CASE_LIMIT } = require('./constants');
 const EMBEDDING_MODEL = 'SAP_NEB.20240715';
 
-async function findSimilar(queryText, limit = 3) {
-    if (!queryText) return [];
+async function findSimilar(queryText) {
+    const limit = SIMILARITY_CASE_LIMIT;
 
-    const safeLimit = Math.max(1, Math.min(parseInt(limit, 10) || 3, 20));
+    if (!queryText) return [];
+    const safeLimit = Math.max(1, Math.min(parseInt(limit, 10) || limit, 20));
 
     const { CheckpointEmbedding } = cds.entities('psamonitoring.db');
 
@@ -35,7 +36,7 @@ async function findSimilar(queryText, limit = 3) {
                   ], as: 'l2distance'
                 }
             )
-            .where`embedding is not null`   // fixed
+            .where`embedding is not null`
             .orderBy({ ref: ['cosine_similarity'], sort: 'desc' })
             .limit(safeLimit)
     );

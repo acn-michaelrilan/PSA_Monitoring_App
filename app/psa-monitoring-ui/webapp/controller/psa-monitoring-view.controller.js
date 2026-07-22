@@ -325,11 +325,9 @@ sap.ui.define([
 
         onAIPress: async function (oEvent) {
 
-            const sTileKey =
-                oEvent.getSource().data("tileKey");
+            const sTileKey = oEvent.getSource().data("tileKey");
 
-            const oConfig =
-                this.TILE_CONFIG[sTileKey];
+            const oConfig = this.TILE_CONFIG[sTileKey];
 
             if (!oConfig) {
                 MessageToast.show("Unknown checkpoint: " + sTileKey);
@@ -343,7 +341,8 @@ sap.ui.define([
                 "",
                 true
             );
-             try {
+
+            try {
                 //  Pull the actual discrepancy rows for this checkpoint
                 const aRows = await this._fetchDiscrepancyRows(
                     oConfig.entitySet,
@@ -362,13 +361,18 @@ sap.ui.define([
                 const sDiscrepancyData =
                     JSON.stringify(aRows, null, 2);
 
+                // Save for later use by the Feedback dialog
+                this.getOwnerComponent()
+                    .getModel("ai")
+                    .setProperty("/lastDiscrepancyData", sDiscrepancyData);
+
                 //  Call analyzeDiscrepancy action
                 const sAiRaw = await this._callAnalyzeDiscrepancy(
                     oConfig.promptKey,     // used to match prompt template
                     sDiscrepancyData
                 );
 
-                // 5. Convert simple markdown → HTML for FormattedText
+                // Convert simple markdown → HTML for FormattedText
                 const sHtml = this._markdownToHtml(sAiRaw);
 
                 oAppCtrl.updateAIResponse(sHtml, false);
@@ -380,8 +384,6 @@ sap.ui.define([
                     false
                 );
             }
-
-            
         },
 
         getPage: function () {
