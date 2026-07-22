@@ -22,6 +22,5 @@ Respond in Markdown with these sections:
 1. **Summary** — 1–2 sentences describing what's wrong.
 2. **Root Cause Hypothesis** — most likely reason based on discrepancy_data.
 3. **Recommended Actions** — concrete, ordered steps (max 5).
-4. **Reference** — briefly mention if a similar past case applied.
 
 Be concise, technical, and actionable. Do not fabricate box numbers or systems not mentioned.

@@ -2,18 +2,18 @@
     xmlns="sap.m"
     xmlns:core="sap.ui.core">
 
-    <HBox wrap="Wrap" class="sapUiMediumMargin">
+    <HBox id="_IDGenHBox" wrap="Wrap" class="sapUiMediumMargin">
 
         <!-- Available Box Check -->
-        <VBox class="sapUiTinyMargin">
-            <GenericTile
+        <VBox id="_IDGenVBox" class="sapUiTinyMargin">
+            <GenericTile id="_IDGenGenericTile1"
                 header="Available Boxes"
                 subheader="Discrepancies"
                 press=".onAvailableBoxesTilePress"
                 state="{summary>/availableBoxCheck/tileState}">
 
-                <TileContent>
-                    <NumericContent
+                <TileContent id="_IDGenTileContent">
+                    <NumericContent id="_IDGenNumericContent"
                         scale="Box"
                         value="{summary>/availableBoxCheck/count}"
                         valueColor="{summary>/availableBoxCheck/valueColor}"
@@ -26,15 +26,15 @@
 
 
         <!-- Shipped BOL Check -->
-        <VBox class="sapUiTinyMargin">
-            <GenericTile
+        <VBox id="_IDGenVBox1" class="sapUiTinyMargin">
+            <GenericTile id="_IDGenGenericTile2"
                 header="Shipped BOL"
                 subheader="Discrepancies"
                 press=".onShippedBolTilePress"
                 state="{summary>/shippedBolCheck/tileState}">
 
-                <TileContent>
-                    <NumericContent
+                <TileContent id="_IDGenTileContent1">
+                    <NumericContent id="_IDGenNumericContent1"
                         scale="BOL"
                         value="{summary>/shippedBolCheck/count}"
                         valueColor="{summary>/shippedBolCheck/valueColor}"
@@ -47,15 +47,15 @@
 
 
         <!-- Shipped Consignee BOL Check -->
-        <VBox class="sapUiTinyMargin">
-            <GenericTile
+        <VBox id="_IDGenVBox2" class="sapUiTinyMargin">
+            <GenericTile id="_IDGenGenericTile3"
                 header="Consignee"
                 subheader="BOL Mismatch"
                 press=".onShippedConsigneeBolTilePress"
                 state="{summary>/shippedConsigneeBOLCheck/tileState}">
 
-                <TileContent>
-                    <NumericContent
+                <TileContent id="_IDGenTileContent2">
+                    <NumericContent id="_IDGenNumericContent2"
                         scale="BOL"
                         value="{summary>/shippedConsigneeBOLCheck/count}"
                         valueColor="{summary>/shippedConsigneeBOLCheck/valueColor}"
@@ -68,15 +68,15 @@
 
 
         <!-- Part Number BOL Check -->
-        <VBox class="sapUiTinyMargin">
-            <GenericTile
+        <VBox id="_IDGenVBox3" class="sapUiTinyMargin">
+            <GenericTile id="_IDGenGenericTile4"
                 header="Part Number"
                 subheader="BOL Mismatch"
                 press=".onPartNumberBolTilePress"
                 state="{summary>/partNumberBOLCheck/tileState}">
 
-                <TileContent>
-                    <NumericContent
+                <TileContent id="_IDGenTileContent3">
+                    <NumericContent id="_IDGenNumericContent3"
                         scale="Part"
                         value="{summary>/partNumberBOLCheck/count}"
                         valueColor="{summary>/partNumberBOLCheck/valueColor}"
@@ -89,15 +89,15 @@
 
 
         <!-- Material Information Check -->
-        <VBox class="sapUiTinyMargin">
-            <GenericTile
+        <VBox id="_IDGenVBox4" class="sapUiTinyMargin">
+            <GenericTile id="_IDGenGenericTile5"
                 header="Material Info"
                 subheader="Mismatch"
                 press=".onMaterialInformationTilePress"
                 state="{summary>/materialInformationCheck/tileState}">
 
-                <TileContent>
-                    <NumericContent
+                <TileContent id="_IDGenTileContent4">
+                    <NumericContent id="_IDGenNumericContent4"
                         scale="Box"
                         value="{summary>/materialInformationCheck/count}"
                         valueColor="{summary>/materialInformationCheck/valueColor}"

@@ -29,7 +29,10 @@ sap.ui.define([
                 new JSONModel({
                     title: "",
                     checkpoint: "",
-                    response: "testing"
+                    response: "",
+                    busy: false,
+                    lastTileKey: "",
+                    lastPromptKey: ""
                 }),
                 "ai"
             );

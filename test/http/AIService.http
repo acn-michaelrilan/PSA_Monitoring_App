@@ -3,8 +3,9 @@
 
 ### Search
 # @name Search_GET
-GET {{server}}/odata/v4/ai/Search
-
+### Search
+# @name Search_GET
+GET http://localhost:4004/odata/v4/ai/Search(query='available box discrepancy')/Set
 
 
 ### Search
@@ -64,6 +65,18 @@ Content-Type: application/json
 {
   "title": "Available Box Check",
   "resolution": "Fetch all boxes from DIS where Processed = 6 and Verified = true. Compare the total available box count between DIS and PSA. If the counts do not match, identify the specific box numbers that exist in DIS but are missing in PSA, and vice versa. Validate whether the missing boxes were not loaded into PSA, were incorrectly marked as unavailable, or were removed due to downstream processing issues. Reprocess or synchronize the affected box records to ensure both systems contain the same set of available boxes.",
+  "discrepancy_data": "{\"PSABoxNumber\":null,\"PSAStatus\":null,\"DISBoxNumber\":\"BOX-0002\",\"DISProcessed\":\"6\",\"Matched\":false}"
+}
+
+### insertCheckpointEmbedding
+# @name insertCheckpointEmbedding_POST
+### insertCheckpointEmbedding
+POST {{server}}/odata/v4/ai/insertCheckpointEmbedding
+Content-Type: application/json
+
+{
+  "title": "Available Box Check",
+  "resolution": "Rootcause: BOX-00002 is `on BOL` Status while in DIS is available status",
   "discrepancy_data": "{\"PSABoxNumber\":null,\"PSAStatus\":null,\"DISBoxNumber\":\"BOX-0002\",\"DISProcessed\":\"6\",\"Matched\":false}"
 }
 

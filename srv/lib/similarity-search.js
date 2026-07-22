@@ -35,7 +35,7 @@ async function findSimilar(queryText, limit = 3) {
                   ], as: 'l2distance'
                 }
             )
-            .where`embedding is not null`   // ✅ fixed
+            .where`embedding is not null`   // fixed
             .orderBy({ ref: ['cosine_similarity'], sort: 'desc' })
             .limit(safeLimit)
     );

@@ -24,16 +24,34 @@
                     class="sapUiLargeMargin"
                     width="auto">
 
-                    <!-- Divider -->
-                    <core:Icon id="aiDivider"
-                        src="sap-icon://horizontal-bar-chart"
-                        visible="false"/>
-
                     <!-- AI Response Section -->
                     <Panel id="aiResponsePanel"
-                        headerText="AI Analysis"
                         expandable="false"
-                        class="sapUiResponsiveMargin">
+                        class="sapUiResponsiveMargin"
+                        busy="{ai>/busy}">
+
+                        <headerToolbar>
+                            <Toolbar id="aiPanelToolbar">
+                                <Title id="aiPanelTitle"
+                                    text="AI Analysis"
+                                    level="H3"/>
+                                <ToolbarSpacer id="aiPanelSpacer"/>
+                                <Button id="aiRefreshBtn"
+                                    text="Refresh"
+                                    icon="sap-icon://refresh"
+                                    type="Transparent"
+                                    tooltip="Re-run AI analysis"
+                                    enabled="{= !${ai>/busy} }"
+                                    press=".onRefresh"/>
+                                <Button id="aiResolutionFeedbackBtn"
+                                    text="AI Resolution Feedback"
+                                    icon="sap-icon://save"
+                                    type="Transparent"
+                                    tooltip="Save your own root cause and resolution"
+                                    enabled="{= !${ai>/busy} }"
+                                    press=".onOpenAIResolutionFeedback"/>
+                            </Toolbar>
+                        </headerToolbar>
 
                         <content>
 

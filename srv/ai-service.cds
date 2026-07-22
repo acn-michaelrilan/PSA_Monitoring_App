@@ -43,5 +43,5 @@ service AIService {
         }
         order by
             cosine_similarity desc
-        limit 3;
+        limit 5;
 }
