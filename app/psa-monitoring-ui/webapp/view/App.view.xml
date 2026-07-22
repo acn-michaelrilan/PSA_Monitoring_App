@@ -3,5 +3,15 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
     <App id="app">
+        <pages>
+            <mvc:XMLView
+                id="dashboardView"
+                viewName="psamonitoringui.view.psa-monitoring-view"/>
+
+            <mvc:XMLView
+                id="aiAssistantView"
+                viewName="psamonitoringui.view.AIAssistant"/>
+        </pages>
     </App>
+
 </mvc:View>

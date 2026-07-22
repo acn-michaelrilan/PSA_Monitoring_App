@@ -1,0 +1,65 @@
+
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Table
+        id="partNumberBolCheckTable"
+        inset="false"
+        sticky="HeaderToolbar,ColumnHeaders"
+        items="{
+            path:'/PartNumberBOLCheck'
+        }"
+        width="auto">
+        <headerToolbar>
+            <Toolbar id="partNumberBolCheckToolbar">
+                <Title id="partNumberBolCheckTitle" text="Part Number BOL Check"/>
+            </Toolbar>
+        </headerToolbar>
+        <columns>
+            <!-- PSA  -->
+            <Column id="partNumberBolCheckColumnPsaBolNumber">
+                <Text id="partNumberBolCheckHeaderPsaBolNumberText" text="{i18n>PSABolNumber}"/>
+            </Column>
+             <Column id="partNumberBolCheckColumnPsaPartNumber">
+                <Text id="partNumberBolCheckHeaderPsaTotalUnitsText" text="{i18n>PSAPartNumber}"/>
+            </Column>
+            <!-- DIS  -->
+            <Column id="partNumberBolCheckColumnDisBlading">
+                <Text id="partNumberBolCheckHeaderDisBolNumberText" text="{i18n>DISBlading}"/>
+            </Column>
+            <Column id="partNumberBolCheckColumnDisPartNumber">
+                <Text id="partNumberBolCheckHeaderDisPartNumberText" text="{i18n>DISPartNumber}"/>
+            </Column>
+
+            <!-- Matched Columns -->
+            <Column id="partNumberBolCheckColumnMatched">
+                <Text id="partNumberBolCheckHeaderMatchedText" text="{i18n>Matched}"/>
+            </Column>
+        </columns>
+        <items>
+            
+        <ColumnListItem id="partNumberBolCheckColumnListItem">
+            <cells>
+                
+                <!-- PSA -->
+                <Text id="partNumberBolCheckCellPsaBolNo" text="{PSABolNo}" />
+                <Text id="partNumberBolCheckCellPsaPartNumber" text="{PSAPartNumber}" />
+
+                <!-- DIS -->
+                <Text id="partNumberBolCheckCellDisBlading" text="{DISBlading}" />
+                <Text id="partNumberBolCheckCellDisPartNumber" text="{DISPartNumber}" />
+
+                <!-- Matched Units -->
+                    <ObjectStatus id="partNumberBolCheckStatusMatchedUnits"
+                        text="{= ${Matched} === 'Yes' ? 'Matched' : 'Unmatched' }"
+                        state="{= ${Matched} === 'Yes' ? 'Success' : 'Error' }"
+                        icon="{= ${Matched} === 'Yes'
+                            ? 'sap-icon://accept'
+                            : 'sap-icon://alert' }"/>
+
+            </cells>
+        </ColumnListItem>
+
+        </items>
+    </Table>
+</core:FragmentDefinition>

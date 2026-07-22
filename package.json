@@ -28,14 +28,15 @@
   },
   "private": true,
   "cds": {
-    "requires": {
-      "auth": "dummy",
-      "[production]": {
-        "db": "hana",
-        "auth": "dummy"
-      }
+  "requires": {
+    "auth": "dummy",
+    "db": {
+      "kind": "hana",
+      "[hybrid]": { "kind": "hana" },
+      "[production]": { "kind": "hana" }
     }
-  },
+  }
+},
   "workspaces": [
     "app/*"
   ]

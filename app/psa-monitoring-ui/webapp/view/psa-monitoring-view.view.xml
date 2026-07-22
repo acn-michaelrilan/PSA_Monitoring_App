@@ -1,70 +1,92 @@
 <mvc:View
     controllerName="psamonitoringui.controller.psa-monitoring-view"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
+		xmlns="sap.m"
+		xmlns:f="sap.f"
+		xmlns:layout="sap.ui.layout"
+        xmlns:core="sap.ui.core"
+		height="100%">
 
-    <Page title="Available Box Check">
+    	
+		<f:DynamicPage
+			id="dynamicPageId"
+			stickySubheaderProvider="iconTabBar"
+			class="sapUiNoContentPadding">
 
-        <content>
+			<!-- DynamicPage Title -->
+			<f:title>
+				<f:DynamicPageTitle id="_IDGenDynamicPageTitle1">
+					<f:heading>
+						<Title id="_IDGenTitle3" text="PSA Monitoring Dashboard"/>
+					</f:heading>
+				</f:DynamicPageTitle>
+			</f:title>
 
-            <Table
-                id="availableBoxTable"
-                growing="true"
-                growingScrollToLoad="true"
-                items="{
-                    path:'/AvailableBoxCheck'
-                }">
+			<f:content>
+			<!-- DynamicPage Header -->			
+			<IconTabBar
+				id="iconTabBar"
+				selectedKey="summary"
+				class="sapUiResponsiveContentPadding">
 
-                <columns>
+				<items>
 
-                    <Column>
-                        <Text text="PSA Box Number"/>
-                    </Column>
+					<IconTabFilter id="_IDGenIconTabFilter"
+						key="summary"
+						text="Summary">
 
-                    <Column>
-                        <Text text="PSA Status"/>
-                    </Column>
+						<core:Fragment
+							fragmentName="psamonitoringui/view.fragments.Summary"
+							type="XML" />
 
-                    <Column>
-                        <Text text="DIS Box Number"/>
-                    </Column>
+					</IconTabFilter>
 
-                    <Column>
-                        <Text text="DIS Processed"/>
-                    </Column>
+					<IconTabFilter id="_IDGenIconTabFilter1"
+						key="availableBoxCheck"
+						text="Available Box Check">
 
-                    <Column>
-                        <Text text="Matched"/>
-                    </Column>
+						<core:Fragment
+							fragmentName="psamonitoringui.view.fragments.AvailableBoxCheckTable"
+							type="XML" />
 
-                </columns>
+					</IconTabFilter>
 
-                <items>
+					<IconTabFilter id="_IDGenIconTabFilter2"
+						key="shippedBol"
+						text="Shipped BOL">
+						<core:Fragment
+							fragmentName="psamonitoringui.view.fragments.ShippedBOLCheckTable"
+							type="XML" />
+					</IconTabFilter>
 
-                    <ColumnListItem>
+					<IconTabFilter id="_IDGenIconTabFilter3"
+						key="shippedConsigneePerBol"
+						text="Shipped Consignee per BOL">
+						<core:Fragment
+							fragmentName="psamonitoringui.view.fragments.ShippedConsigneeBOLTable"
+							type="XML" />
+					</IconTabFilter>
 
-                        <cells>
+					<IconTabFilter id="_IDGenIconTabFilter4"
+						key="partNumberPerBolCheck"
+						text="Part Number per BOL Check">
+						<core:Fragment
+							fragmentName="psamonitoringui.view.fragments.PartNumberBOLCheckTable"
+							type="XML" />
+					</IconTabFilter>
 
-                            <Text text="{PSABoxNumber}"/>
+					<IconTabFilter id="_IDGenIconTabFilter5"
+						key="materialInformationCheck"
+						text="Material Information Check">
+						<core:Fragment
+							fragmentName="psamonitoringui.view.fragments.MaterialInformationCheck"
+							type="XML" />
+					</IconTabFilter>
 
-                            <Text text="{PSAStatus}"/>
+				</items>
+			</IconTabBar>
 
-                            <Text text="{DISBoxNumber}"/>
-
-                            <Text text="{DISProcessed}"/>
-
-                            <Text text="{Matched}"/>
-
-                        </cells>
-
-                    </ColumnListItem>
-
-                </items>
-
-            </Table>
-
-        </content>
-
-    </Page>
+			</f:content>
+		</f:DynamicPage>
 
 </mvc:View>

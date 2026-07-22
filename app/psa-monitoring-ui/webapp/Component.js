@@ -1,7 +1,8 @@
 sap.ui.define([
     "sap/ui/core/UIComponent",
+    "sap/ui/model/json/JSONModel",
     "psamonitoringui/model/models"
-], (UIComponent, models) => {
+], (UIComponent, JSONModel, models) => {
     "use strict";
 
     return UIComponent.extend("psamonitoringui.Component", {
@@ -13,11 +14,29 @@ sap.ui.define([
         },
 
         init() {
+
             // call the base component's init function
             UIComponent.prototype.init.apply(this, arguments);
 
-            // set the device model
-            this.setModel(models.createDeviceModel(), "device");
+            // Device Model
+            this.setModel(
+                models.createDeviceModel(),
+                "device"
+            );
+
+            // AI Model
+            this.setModel(
+                new JSONModel({
+                    title: "",
+                    checkpoint: "",
+                    response: "",
+                    busy: false,
+                    lastTileKey: "",
+                    lastDiscrepancyData: "",
+                    hasDiscrepancies: false 
+                }),
+                "ai"
+            );
 
             // enable routing
             this.getRouter().initialize();
