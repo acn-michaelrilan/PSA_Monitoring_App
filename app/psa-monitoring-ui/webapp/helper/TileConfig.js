@@ -22,6 +22,7 @@ sap.ui.define([], function () {
 
         shippedConsigneeBOLCheck: {
             title: "Shipped Consignee",
+            promptKey: "Shipped Consignee per BOL Check",
             entitySet: "ShippedConsigneeBOLCheck",
             filter: "Matched eq false",
             tabKey: "shippedConsigneePerBol",
@@ -30,6 +31,7 @@ sap.ui.define([], function () {
 
         partNumberBOLCheck: {
             title: "Part Number",
+            promptKey: "Part Number per BOL Check",
             entitySet: "PartNumberBOLCheck",
             filter: "Matched eq false",
             tabKey: "partNumberPerBolCheck",
@@ -38,6 +40,7 @@ sap.ui.define([], function () {
 
         materialInformationCheck: {
             title: "Material Information",
+            promptKey: "Material Information Check",
             entitySet: "MaterialInformationCheck",
             filter: "Matched eq false",
             tabKey: "materialInformationCheck",

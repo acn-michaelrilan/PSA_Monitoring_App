@@ -56,7 +56,7 @@ Content-Type: application/json
 }
 
 
-### insertCheckpointEmbedding
+### insertCheckpointEmbedding for Available Box Check
 # @name insertCheckpointEmbedding_POST
 ### insertCheckpointEmbedding
 POST {{server}}/odata/v4/ai/insertCheckpointEmbedding
@@ -68,7 +68,7 @@ Content-Type: application/json
   "discrepancy_data": "{\"PSABoxNumber\":null,\"PSAStatus\":null,\"DISBoxNumber\":\"BOX-0002\",\"DISProcessed\":\"6\",\"Matched\":false}"
 }
 
-### insertCheckpointEmbedding
+### insertCheckpointEmbedding for Shipped BOL Check
 # @name insertCheckpointEmbedding_POST
 ### insertCheckpointEmbedding
 POST {{server}}/odata/v4/ai/insertCheckpointEmbedding

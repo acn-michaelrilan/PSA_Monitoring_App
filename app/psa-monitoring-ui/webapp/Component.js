@@ -32,7 +32,8 @@ sap.ui.define([
                     response: "",
                     busy: false,
                     lastTileKey: "",
-                    lastDiscrepancyData: "" 
+                    lastDiscrepancyData: "",
+                    hasDiscrepancies: false 
                 }),
                 "ai"
             );

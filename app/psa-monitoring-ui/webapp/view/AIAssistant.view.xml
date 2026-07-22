@@ -36,19 +36,23 @@
                                     text="{i18n>aiPanelTitle}"
                                     level="H3"/>
                                 <ToolbarSpacer id="aiPanelSpacer"/>
+                                
+                                <!-- Refresh Button -->
                                 <Button id="aiRefreshBtn"
                                     text="Refresh"
                                     icon="sap-icon://refresh"
                                     type="Transparent"
                                     tooltip="{i18n>aiRefreshButtonTooltip}"
-                                    enabled="{= !${ai>/busy} }"
+                                    enabled="{= !${ai>/busy} &amp;&amp; ${ai>/hasDiscrepancies} }"
                                     press=".onRefresh"/>
+
+                                <!-- Resolution Feedback Button -->
                                 <Button id="aiResolutionFeedbackBtn"
                                     text="{i18n>aiFeedbackButtonText}"
                                     icon="sap-icon://save"
                                     type="Transparent"
                                     tooltip="{i18n>aiFeedbackButtonTooltip}"
-                                    enabled="{= !${ai>/busy} }"
+                                    enabled="{= !${ai>/busy} &amp;&amp; ${ai>/hasDiscrepancies} }"
                                     press=".onOpenAIResolutionFeedback"/>
                             </Toolbar>
                         </headerToolbar>

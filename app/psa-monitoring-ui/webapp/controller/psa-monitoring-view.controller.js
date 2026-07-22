@@ -326,8 +326,7 @@ sap.ui.define([
         onAIPress: async function (oEvent) {
 
             const sTileKey = oEvent.getSource().data("tileKey");
-
-            const oConfig = this.TILE_CONFIG[sTileKey];
+            const oConfig  = this.TILE_CONFIG[sTileKey];
 
             if (!oConfig) {
                 MessageToast.show("Unknown checkpoint: " + sTileKey);
@@ -335,6 +334,8 @@ sap.ui.define([
             }
 
             const oAppCtrl = this._getAppController();
+            const oAIModel = this.getOwnerComponent().getModel("ai");   // ✅ DECLARE ONCE
+
             oAppCtrl.navigateToAI(
                 `AI Assistant for ${oConfig.title}`,
                 sTileKey,
@@ -350,6 +351,7 @@ sap.ui.define([
                 );
 
                 if (!aRows.length) {
+                    oAIModel.setProperty("/hasDiscrepancies", false);
                     oAppCtrl.updateAIResponse(
                         "<p><em>No discrepancies found for this checkpoint. ✅</em></p>",
                         false
@@ -358,17 +360,15 @@ sap.ui.define([
                 }
 
                 //  Serialize to a compact JSON string for the LLM
-                const sDiscrepancyData =
-                    JSON.stringify(aRows, null, 2);
+                const sDiscrepancyData = JSON.stringify(aRows, null, 2);
 
                 // Save for later use by the Feedback dialog
-                this.getOwnerComponent()
-                    .getModel("ai")
-                    .setProperty("/lastDiscrepancyData", sDiscrepancyData);
+                oAIModel.setProperty("/lastDiscrepancyData", sDiscrepancyData);
+                oAIModel.setProperty("/hasDiscrepancies", true);
 
                 //  Call analyzeDiscrepancy action
                 const sAiRaw = await this._callAnalyzeDiscrepancy(
-                    oConfig.promptKey,     // used to match prompt template
+                    oConfig.promptKey,
                     sDiscrepancyData
                 );
 
@@ -379,8 +379,9 @@ sap.ui.define([
 
             } catch (oErr) {
                 console.error("AI analysis failed:", oErr);
+                oAIModel.setProperty("/hasDiscrepancies", false);
                 oAppCtrl.updateAIResponse(
-                    `<p style="color:red;">AI analysis failed: ${oErr.message}</p>`,
+                    `<p><em>AI analysis failed: ${oErr.message}</em></p>`,
                     false
                 );
             }
