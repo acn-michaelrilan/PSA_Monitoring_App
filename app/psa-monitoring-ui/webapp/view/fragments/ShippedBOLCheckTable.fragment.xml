@@ -18,40 +18,40 @@
         <columns>
             <!-- PSA  -->
             <Column id="_IDGenColumn5">
-                <Text id="_IDGenText" text="PSA BOL Number"/>
+                <Text id="_IDGenText" text="{i18n>PSABolNumber}"/>
             </Column>
              <Column id="_IDGenColumn6">
-                <Text id="_IDGenText1" text="PSA Total Units"/>
+                <Text id="_IDGenText1" text="{i18n>PSATotalUnits}"/>
             </Column>
              <Column id="_IDGenColumn7">
-                <Text id="_IDGenText2" text="PSA Total Volume"/>
+                <Text id="_IDGenText2" text="{i18n>PSATotalVolume}"/>
             </Column>
             <Column id="_IDGenColumn8">
-                <Text id="_IDGenText3" text="PSA Total Boxes"/>
+                <Text id="_IDGenText3" text="{i18n>PSATotalBoxes}"/>
             </Column>
             <!-- DIS  -->
             <Column id="_IDGenColumn9">
-                <Text id="_IDGenText4" text="DIS Bill of Lading"/>
+                <Text id="_IDGenText4" text="{i18n>DISBlading}"/>
             </Column>
             <Column id="_IDGenColumn10">
-                <Text id="_IDGenText5" text="DIS Total Units"/>
+                <Text id="_IDGenText5" text="{i18n>DISTotalUnits}"/>
             </Column>
              <Column id="_IDGenColumn11">
-                <Text id="_IDGenText6" text="DIS Total Volume"/>
+                <Text id="_IDGenText6" text="{i18n>DISTotalVolume}"/>
             </Column>
             <Column id="_IDGenColumn12">
-                <Text id="_IDGenText7" text="DIS Total Boxes"/>
+                <Text id="_IDGenText7" text="{i18n>DISTotalBoxes}"/>
             </Column>
 
             <!-- Matched Columns -->
             <Column id="_IDGenColumn13">
-                <Text id="_IDGenText8" text="Matched Units"/>
+                <Text id="_IDGenText8" text="{i18n>MatchedUnits}"/>
             </Column>
             <Column id="_IDGenColumn14">
-                <Text id="_IDGenText9" text="Matched Volume "/>
+                <Text id="_IDGenText9" text="{i18n>MatchedVolume}"/>
             </Column>
             <Column id="_IDGenColumn15">
-                <Text id="_IDGenText10" text="Matched Boxes"/>
+                <Text id="_IDGenText10" text="{i18n>MatchedBoxes}"/>
             </Column>
         </columns>
         <items>

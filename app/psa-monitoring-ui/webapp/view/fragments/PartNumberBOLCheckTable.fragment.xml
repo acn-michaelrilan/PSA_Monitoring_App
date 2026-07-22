@@ -18,22 +18,22 @@
         <columns>
             <!-- PSA  -->
             <Column id="partNumberBolCheckColumnPsaBolNumber">
-                <Text id="partNumberBolCheckHeaderPsaBolNumberText" text="PSA BOL Number"/>
+                <Text id="partNumberBolCheckHeaderPsaBolNumberText" text="{i18n>PSABolNumber}"/>
             </Column>
              <Column id="partNumberBolCheckColumnPsaPartNumber">
-                <Text id="partNumberBolCheckHeaderPsaTotalUnitsText" text="PSA Part Number"/>
+                <Text id="partNumberBolCheckHeaderPsaTotalUnitsText" text="{i18n>PSAPartNumber}"/>
             </Column>
             <!-- DIS  -->
             <Column id="partNumberBolCheckColumnDisBlading">
-                <Text id="partNumberBolCheckHeaderDisBolNumberText" text="DIS Bill of Lading"/>
+                <Text id="partNumberBolCheckHeaderDisBolNumberText" text="{i18n>DISBlading}"/>
             </Column>
             <Column id="partNumberBolCheckColumnDisPartNumber">
-                <Text id="partNumberBolCheckHeaderDisPartNumberText" text="DIS Part Number"/>
+                <Text id="partNumberBolCheckHeaderDisPartNumberText" text="{i18n>DISPartNumber}"/>
             </Column>
 
             <!-- Matched Columns -->
             <Column id="partNumberBolCheckColumnMatched">
-                <Text id="partNumberBolCheckHeaderMatchedText" text="Matched"/>
+                <Text id="partNumberBolCheckHeaderMatchedText" text="{i18n>Matched}"/>
             </Column>
         </columns>
         <items>

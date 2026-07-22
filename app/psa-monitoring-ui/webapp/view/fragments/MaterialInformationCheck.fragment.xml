@@ -18,22 +18,22 @@
         <columns>
             <!-- PSA  -->
             <Column id="materialInformationCheckColumnPsaBolNumber">
-                <Text id="materialInformationCheckHeaderPsaBolNumberText" text="PSA Box Number"/>
+                <Text id="materialInformationCheckHeaderPsaBolNumberText" text="{i18n>PSABolNumber}"/>
             </Column>
              <Column id="materialInformationCheckColumnPsaPartNumber">
-                <Text id="materialInformationCheckHeaderPsaTotalUnitsText" text="PSA Material Description"/>
+                <Text id="materialInformationCheckHeaderPsaTotalUnitsText" text="{i18n>PSAMaterialDescription}"/>
             </Column>
             <!-- DIS  -->
             <Column id="materialInformationCheckColumnDisBlading">
-                <Text id="materialInformationCheckHeaderDisBolNumberText" text="DIS Box Number"/>
+                <Text id="materialInformationCheckHeaderDisBolNumberText" text="{i18n>DISBoxNumber}"/>
             </Column>
             <Column id="materialInformationCheckColumnDisPartNumber">
-                <Text id="materialInformationCheckHeaderDisPartNumberText" text="DIS Material Description"/>
+                <Text id="materialInformationCheckHeaderDisPartNumberText" text="{i18n>DISMaterialDescription}"/>
             </Column>
 
             <!-- Matched Columns -->
             <Column id="materialInformationCheckColumnMatched">
-                <Text id="materialInformationCheckHeaderMatchedText" text="Matched"/>
+                <Text id="materialInformationCheckHeaderMatchedText" text="{i18n>Matched}"/>
             </Column>
         </columns>
         <items>

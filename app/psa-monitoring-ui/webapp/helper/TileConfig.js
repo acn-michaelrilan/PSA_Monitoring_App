@@ -4,7 +4,7 @@ sap.ui.define([], function () {
     return {
         availableBoxCheck: {
             title: "Available Boxes",
-            promptKey: "Available Box Check", // Key to look up prompt text in prompts/index.js
+            promptKey: "Available Box Check",
             entitySet: "AvailableBoxCheck",
             filter: "Matched eq false",
             tabKey: "availableBoxCheck",
@@ -13,6 +13,7 @@ sap.ui.define([], function () {
 
         shippedBolCheck: {
             title: "Shipped BOL",
+            promptKey: "Shipped BOL Check",
             entitySet: "ShippedBolCheck",
             filter: "Matched eq false",
             tabKey: "shippedBol",

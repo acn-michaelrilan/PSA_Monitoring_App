@@ -33,21 +33,21 @@
                         <headerToolbar>
                             <Toolbar id="aiPanelToolbar">
                                 <Title id="aiPanelTitle"
-                                    text="AI Analysis"
+                                    text="{i18n>aiPanelTitle}"
                                     level="H3"/>
                                 <ToolbarSpacer id="aiPanelSpacer"/>
                                 <Button id="aiRefreshBtn"
                                     text="Refresh"
                                     icon="sap-icon://refresh"
                                     type="Transparent"
-                                    tooltip="Re-run AI analysis"
+                                    tooltip="{i18n>aiRefreshButtonTooltip}"
                                     enabled="{= !${ai>/busy} }"
                                     press=".onRefresh"/>
                                 <Button id="aiResolutionFeedbackBtn"
-                                    text="AI Resolution Feedback"
+                                    text="{i18n>aiFeedbackButtonText}"
                                     icon="sap-icon://save"
                                     type="Transparent"
-                                    tooltip="Save your own root cause and resolution"
+                                    tooltip="{i18n>aiFeedbackButtonTooltip}"
                                     enabled="{= !${ai>/busy} }"
                                     press=".onOpenAIResolutionFeedback"/>
                             </Toolbar>

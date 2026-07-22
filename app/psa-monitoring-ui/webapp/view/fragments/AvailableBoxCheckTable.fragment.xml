@@ -19,16 +19,16 @@
                 <ToolbarSpacer id="_IDGenToolbarSpacer"/>
 
                 <Button id="_IDGenButton"
-                    text="AI Assistant"
+                    text="{i18n>aiAssistantButtonText}"
                     icon="sap-icon://ai"
                     type="Emphasized"
+                    tooltip="{i18n>aiAssistantButtonTooltip}"
                     press=".onAIPress">
                     <customData>
                         <core:CustomData
                             key="tileKey"
                             value="availableBoxCheck"/>
                     </customData>
-
                 </Button>
 
 
@@ -36,19 +36,19 @@
         </headerToolbar>
         <columns>
             <Column id="_IDGenColumn">
-                <Text id="availableBoxHeaderPSABoxNumber" text="PSA Box Number"/>
+                <Text id="availableBoxHeaderPSABoxNumber" text="{i18n>PSABoxNumber}"/>
             </Column>
             <Column id="_IDGenColumn1">
-                <Text id="availableBoxHeaderPSAStatus" text="PSA Status"/>
+                <Text id="availableBoxHeaderPSAStatus" text="{i18n>PSAStatus}"/>
             </Column>
             <Column id="_IDGenColumn2">
-                <Text id="availableBoxHeaderDISBoxNumber" text="DIS Box Number"/>
+                <Text id="availableBoxHeaderDISBoxNumber" text="{i18n>DISBoxNumber} "/>
             </Column>
             <Column id="_IDGenColumn3">
-                <Text id="availableBoxHeaderDISProcessed" text="DIS Processed"/>
+                <Text id="availableBoxHeaderDISProcessed" text="{i18n>DISProcessed}"/>
             </Column>
             <Column id="_IDGenColumn4">
-                <Text id="availableBoxHeaderMatched" text="Matched"/>
+                <Text id="availableBoxHeaderMatched" text="{i18n>Matched}"/>
             </Column>
         </columns>
         <items>

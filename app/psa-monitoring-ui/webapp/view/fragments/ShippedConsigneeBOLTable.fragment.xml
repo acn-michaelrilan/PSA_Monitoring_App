@@ -25,7 +25,7 @@
             </Column>
             <!-- DIS  -->
             <Column id="_IDGenColumn18">
-                <Text id="_IDGenText21" text="DIS BOL Number"/>
+                <Text id="_IDGenText21" text="DIS Bill of Lading"/>
             </Column>
             <Column id="_IDGenColumn19">
                 <Text id="_IDGenText22" text="DIS Customer Number"/>
