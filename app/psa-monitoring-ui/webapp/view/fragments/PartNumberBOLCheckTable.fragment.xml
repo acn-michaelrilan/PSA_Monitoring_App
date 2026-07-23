@@ -13,6 +13,20 @@
         <headerToolbar>
             <Toolbar id="partNumberBolCheckToolbar">
                 <Title id="partNumberBolCheckTitle" text="Part Number BOL Check"/>
+                <ToolbarSpacer id="ToolbarSpacerPartNumberBOLCheckTableBol"/>
+
+                <Button id="ToolbarSpacerPartNumberBOLCheckTableBolbtn"
+                    text="{i18n>aiAssistantButtonText}"
+                    icon="sap-icon://ai"
+                    type="Emphasized"
+                    tooltip="{i18n>aiAssistantButtonTooltip}"
+                    press=".onAIPress">
+                    <customData>
+                        <core:CustomData
+                            key="tileKey"
+                            value="partNumberBOLCheck"/>
+                    </customData>
+                </Button>
             </Toolbar>
         </headerToolbar>
         <columns>
