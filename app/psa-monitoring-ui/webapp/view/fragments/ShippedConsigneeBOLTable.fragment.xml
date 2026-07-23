@@ -13,6 +13,20 @@
         <headerToolbar>
             <Toolbar id="_IDGenToolbar2">
                 <Title id="_IDGenTitle2" text="Shipped BOL Check"/>
+                <ToolbarSpacer id="ToolbarSpacerShippedConsigneeBol"/>
+
+                <Button id="ToolbarSpacerShippedConsigneeBolbtn"
+                    text="{i18n>aiAssistantButtonText}"
+                    icon="sap-icon://ai"
+                    type="Emphasized"
+                    tooltip="{i18n>aiAssistantButtonTooltip}"
+                    press=".onAIPress">
+                    <customData>
+                        <core:CustomData
+                            key="tileKey"
+                            value="shippedConsigneeBOLCheck"/>
+                    </customData>
+                </Button>
             </Toolbar>
         </headerToolbar>
         <columns>
