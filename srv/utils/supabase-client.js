@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+const axios = require('axios');
 
 const SUPABASE_CLIENTS = {
   PSA: {
@@ -49,20 +49,27 @@ async function fetchSupabase(clientName, tableName, queryParams = {}) {
   validateClient(client);
 
   const url = buildUrl(client, tableName, queryParams);
-  const response = await fetch(url, {
-    method: 'GET',
-    headers: getHeaders(client)
-  });
 
-  if (!response.ok) {
-    const responseText = await response.text();
+  try {
+    const response = await axios.get(url, {
+      headers: getHeaders(client)
+    });
 
-    throw new Error(
-      `${tableName} HTTP Error: ${response.status}. ${responseText}`
-    );
+    return response.data;
+  } catch (error) {
+    if (error.response) {
+      const responseText =
+        typeof error.response.data === 'string'
+          ? error.response.data
+          : JSON.stringify(error.response.data);
+
+      throw new Error(
+        `${tableName} HTTP Error: ${error.response.status}. ${responseText}`
+      );
+    }
+
+    throw error;
   }
-
-  return response.json();
 }
 
 module.exports = {
