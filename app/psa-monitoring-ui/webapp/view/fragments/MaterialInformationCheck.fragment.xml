@@ -13,6 +13,20 @@
         <headerToolbar>
             <Toolbar id="materialInformationCheckToolbar">
                 <Title id="materialInformationCheckTitle" text="Material Information Check"/>
+                <ToolbarSpacer id="ToolbarSpacerMaterialInformationCheckBol"/>
+
+                <Button id="ToolbarSpacerMaterualInformationCheckbtn"
+                    text="{i18n>aiAssistantButtonText}"
+                    icon="sap-icon://ai"
+                    type="Emphasized"
+                    tooltip="{i18n>aiAssistantButtonTooltip}"
+                    press=".onAIPress">
+                    <customData>
+                        <core:CustomData
+                            key="tileKey"
+                            value="materialInformationCheck"/>
+                    </customData>
+                </Button>
             </Toolbar>
         </headerToolbar>
         <columns>
