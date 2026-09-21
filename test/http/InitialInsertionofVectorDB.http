@@ -141,3 +141,4 @@ Content-Type: application/json
   "resolution": "**Root Cause:** BOX-0162 had 4 units, but only 2 had MaterialDesc populated in BOXFORBOL. The other 2 units had NULL despite ODS having complete data for all 4.\n\n**Resolution:** Ran a targeted MaterialDesc backfill for BOX-0162 from prod_vw_boxed. All 4 units now show 'Factor VIII Concentrate 1000IU'. Recommended a scheduled unit-level integrity check.",
   "discrepancy_data": "[{\"Boxnumber\":\"BOX-0162\",\"UnitsTotal\":4,\"UnitsWithMaterialDesc\":2,\"ODSMaterialDesc\":\"Factor VIII Concentrate 1000IU\",\"Matched\":false}]"
 }
+
