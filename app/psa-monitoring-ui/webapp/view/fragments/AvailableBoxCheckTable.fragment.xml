@@ -1,90 +1,115 @@
-
 <core:FragmentDefinition
     xmlns="sap.m"
     xmlns:core="sap.ui.core">
-    <Table
-        id="availableBoxTable"
-        inset="false"
-        sticky="HeaderToolbar,ColumnHeaders"
-        items="{
-            path:'/AvailableBoxCheck'
-        }"
-        width="auto">
-        <headerToolbar>
-            <Toolbar id="availableBoxToolbar">
 
-                <Title id="_IDGenTitle4"
-                    text="Available Box Check"/>
+    <VBox id="availableBoxWrapper" width="100%">
 
-                <ToolbarSpacer id="_IDGenToolbarSpacer"/>
+        <!-- ===== Filter Bar ===== -->
+        <HBox id="availableBoxFilterBar"
+            alignItems="End"
+            wrap="Wrap"
+            class="sapUiSmallMarginBottom">
 
-                <Button id="_IDGenButton"
-                    text="{i18n>aiAssistantButtonText}"
-                    icon="sap-icon://ai"
-                    type="Emphasized"
-                    tooltip="{i18n>aiAssistantButtonTooltip}"
-                    press=".onAIPress">
-                    <customData>
-                        <core:CustomData
-                            key="tileKey"
-                            value="availableBoxCheck"/>
-                    </customData>
-                </Button>
+            <VBox id="availableBoxMatchedFilterBox" class="sapUiSmallMarginEnd">
+                <Label id="availableBoxMatchedFilterLabel"
+                    text="{i18n>Matched}"
+                    labelFor="availableBoxMatchedFilter"/>
+                <Select id="availableBoxMatchedFilter"
+                    width="12rem"
+                    selectedKey="all">
+                    <core:Item id="availableBoxFilterAll"       key="all"       text="{i18n>filterAll}"/>
+                    <core:Item id="availableBoxFilterMatched"   key="matched"   text="{i18n>filterMatched}"/>
+                    <core:Item id="availableBoxFilterUnmatched" key="unmatched" text="{i18n>filterUnmatched}"/>
+                </Select>
+            </VBox>
 
+            <Button id="availableBoxFilterBtn"
+                text="{i18n>filterButtonText}"
+                icon="sap-icon://filter"
+                type="Default"
+                class="sapUiTinyMarginEnd"
+                press=".onAvailableBoxFilter"/>
 
-            </Toolbar>
-        </headerToolbar>
-        <columns>
-            <Column id="_IDGenColumn">
-                <Text id="availableBoxHeaderPSABoxNumber" text="{i18n>PSABoxNumber}"/>
-            </Column>
-            <Column id="_IDGenColumn1">
-                <Text id="availableBoxHeaderPSAStatus" text="{i18n>PSAStatus}"/>
-            </Column>
-            <Column id="_IDGenColumn2">
-                <Text id="availableBoxHeaderDISBoxNumber" text="{i18n>DISBoxNumber} "/>
-            </Column>
-            <Column id="_IDGenColumn3">
-                <Text id="availableBoxHeaderDISProcessed" text="{i18n>DISProcessed}"/>
-            </Column>
-            <Column id="_IDGenColumn4">
-                <Text id="availableBoxHeaderMatched" text="{i18n>Matched}"/>
-            </Column>
-        </columns>
-        <items>
-            
-        <ColumnListItem id="availableBoxTableItem">
-            <cells>
+            <Button id="availableBoxClearFilterBtn"
+                text="{i18n>clearFilterButtonText}"
+                icon="sap-icon://clear-filter"
+                type="Transparent"
+                press=".onAvailableBoxClearFilter"/>
+        </HBox>
 
-                <ObjectStatus id="_IDGenObjectStatus1"
-                    text="{= ${PSABoxNumber} ? ${PSABoxNumber} : 'None' }"
-                    state="{= ${PSABoxNumber} ? 'None' : 'Error' }"
-                    icon="{= ${PSABoxNumber} ? '' : 'sap-icon://decline' }"/>
+        <!-- ===== Table ===== -->
+        <Table
+            id="availableBoxTable"
+            inset="false"
+            sticky="HeaderToolbar,ColumnHeaders"
+            items="{ path:'/AvailableBoxCheck' }"
+            width="auto">
 
-                <ObjectStatus id="_IDGenObjectStatus2"
-                    text="{= ${PSAStatus} ? ${PSAStatus} : 'None' }"
-                    state="{= ${PSAStatus} ? 'Success' : 'Error' }"/>
+            <headerToolbar>
+                <Toolbar id="availableBoxToolbar">
+                    <Title id="_IDGenTitle4" text="Available Box Check"/>
+                    <ToolbarSpacer id="_IDGenToolbarSpacer"/>
+                    <Button id="_IDGenButton"
+                        text="{i18n>aiAssistantButtonText}"
+                        icon="sap-icon://ai"
+                        type="Emphasized"
+                        tooltip="{i18n>aiAssistantButtonTooltip}"
+                        press=".onAIPress">
+                        <customData>
+                            <core:CustomData key="tileKey" value="availableBoxCheck"/>
+                        </customData>
+                    </Button>
+                </Toolbar>
+            </headerToolbar>
 
-                <ObjectStatus id="_IDGenObjectStatus3"
-                    text="{= ${DISBoxNumber} ? ${DISBoxNumber} : 'None' }"
-                    state="{= ${DISBoxNumber} ? 'None' : 'Error' }"
-                    icon="{= ${DISBoxNumber} ? '' : 'sap-icon://decline' }"/>
+            <columns>
+                <Column id="_IDGenColumn">
+                    <Text id="availableBoxHeaderPSABoxNumber" text="{i18n>PSABoxNumber}"/>
+                </Column>
+                <Column id="_IDGenColumn1">
+                    <Text id="availableBoxHeaderPSAStatus" text="{i18n>PSAStatus}"/>
+                </Column>
+                <Column id="_IDGenColumn2">
+                    <Text id="availableBoxHeaderDISBoxNumber" text="{i18n>DISBoxNumber}"/>
+                </Column>
+                <Column id="_IDGenColumn3">
+                    <Text id="availableBoxHeaderDISProcessed" text="{i18n>DISProcessed}"/>
+                </Column>
+                <Column id="_IDGenColumn4">
+                    <Text id="availableBoxHeaderMatched" text="{i18n>Matched}"/>
+                </Column>
+            </columns>
 
-                <ObjectStatus id="_IDGenObjectStatus4"
-                    text="{= ${DISProcessed} ? ${DISProcessed} : 'None' }"
-                    state="{= ${DISProcessed} ? 'None' : 'Error' }"
-                    icon="{= ${DISProcessed} ? '' : 'sap-icon://decline' }"/>
+            <items>
+                <ColumnListItem id="availableBoxTableItem">
+                    <cells>
+                        <ObjectStatus id="_IDGenObjectStatus1"
+                            text="{= ${PSABoxNumber} ? ${PSABoxNumber} : 'None' }"
+                            state="{= ${PSABoxNumber} ? 'None' : 'Error' }"
+                            icon="{= ${PSABoxNumber} ? '' : 'sap-icon://decline' }"/>
 
-                <ObjectStatus id="_IDGenObjectStatus5"
-                    text="{= ${Matched} === 'Yes' ? 'Matched' : 'Unmatched' }"
-                    state="{= ${Matched} === 'Yes' ? 'Success' : 'Error' }"
-                    icon="{= ${Matched} === 'Yes'
-                        ? 'sap-icon://accept'
-                        : 'sap-icon://alert' }"/>
+                        <ObjectStatus id="_IDGenObjectStatus2"
+                            text="{= ${PSAStatus} ? ${PSAStatus} : 'None' }"
+                            state="{= ${PSAStatus} ? 'Success' : 'Error' }"/>
 
-            </cells>
-        </ColumnListItem>
+                        <ObjectStatus id="_IDGenObjectStatus3"
+                            text="{= ${DISBoxNumber} ? ${DISBoxNumber} : 'None' }"
+                            state="{= ${DISBoxNumber} ? 'None' : 'Error' }"
+                            icon="{= ${DISBoxNumber} ? '' : 'sap-icon://decline' }"/>
 
-        </items>
-    </Table>
+                        <ObjectStatus id="_IDGenObjectStatus4"
+                            text="{= ${DISProcessed} ? ${DISProcessed} : 'None' }"
+                            state="{= ${DISProcessed} ? 'None' : 'Error' }"
+                            icon="{= ${DISProcessed} ? '' : 'sap-icon://decline' }"/>
+
+                        <!-- Matched is Boolean in CDS, so compare to true (not 'Yes') -->
+                        <ObjectStatus id="_IDGenObjectStatus5"
+                            text="{= %{Matched} === true ? 'Matched' : 'Unmatched' }"
+                            state="{= %{Matched} === true ? 'Success' : 'Error' }"
+                            icon="{= %{Matched} === true ? 'sap-icon://accept' : 'sap-icon://alert' }"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </VBox>
 </core:FragmentDefinition>

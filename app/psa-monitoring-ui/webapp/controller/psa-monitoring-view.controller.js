@@ -3,8 +3,10 @@ sap.ui.define([
     "sap/ui/core/Fragment",
     "sap/ui/model/json/JSONModel",
     "sap/m/MessageToast",
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator",
     "psamonitoringui/helper/TileConfig"
-], function (Controller, Fragment, JSONModel, MessageToast, TileConfig) {
+], function (Controller, Fragment, JSONModel, MessageToast, Filter, FilterOperator, TileConfig) {
     "use strict";
 
     return Controller.extend("psamonitoringui.controller.psa-monitoring-view", {
@@ -318,6 +320,38 @@ sap.ui.define([
             this._navigateToTab(
                 this.TILE_CONFIG.materialInformationCheck.tabKey
             );
+        },
+        
+        /* =========================================================== */
+        /* Available Box Check - Filter                                */
+        /* =========================================================== */
+
+        onAvailableBoxFilter: function () {
+            const sKey     = this.byId("availableBoxMatchedFilter").getSelectedKey();
+            const oBinding = this.byId("availableBoxTable").getBinding("items");
+
+            if (!oBinding) {
+                return;
+            }
+
+            const aFilters = [];
+
+            if (sKey === "matched") {
+                aFilters.push(new Filter("Matched", FilterOperator.EQ, true));
+            } else if (sKey === "unmatched") {
+                aFilters.push(new Filter("Matched", FilterOperator.EQ, false));
+            }
+
+            oBinding.filter(aFilters);
+        },
+
+        onAvailableBoxClearFilter: function () {
+            this.byId("availableBoxMatchedFilter").setSelectedKey("all");
+
+            const oBinding = this.byId("availableBoxTable").getBinding("items");
+            if (oBinding) {
+                oBinding.filter([]);
+            }
         },
         /* =========================================================== */
         /* Existing Page Helpers                                       */
