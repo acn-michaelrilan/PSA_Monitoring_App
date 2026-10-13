@@ -353,6 +353,300 @@ sap.ui.define([
                 oBinding.filter([]);
             }
         },
+
+        /* =========================================================== */
+        /* Shipped BOL Check - Filter                                  */
+        /* =========================================================== */
+
+        onShippedBolFilter: function () {
+            const sUnitsKey =
+                this.byId("shippedBolUnitsFilter").getSelectedKey();
+
+            const sVolumeKey =
+                this.byId("shippedBolVolumeFilter").getSelectedKey();
+
+            const sBoxesKey =
+                this.byId("shippedBolBoxesFilter").getSelectedKey();
+
+            const oTable =
+                this.byId("shippedBolTable");
+
+            const oBinding =
+                oTable?.getBinding("items");
+
+            if (!oBinding) {
+                return;
+            }
+
+            const aFilters = [];
+
+            // Matched Units
+            if (sUnitsKey === "matched") {
+                aFilters.push(
+                    new Filter(
+                        "MatchedUnits",
+                        FilterOperator.EQ,
+                        true
+                    )
+                );
+            } else if (sUnitsKey === "unmatched") {
+                aFilters.push(
+                    new Filter(
+                        "MatchedUnits",
+                        FilterOperator.EQ,
+                        false
+                    )
+                );
+            }
+
+            // Matched Volume
+            if (sVolumeKey === "matched") {
+                aFilters.push(
+                    new Filter(
+                        "MatchedVolume",
+                        FilterOperator.EQ,
+                        true
+                    )
+                );
+            } else if (sVolumeKey === "unmatched") {
+                aFilters.push(
+                    new Filter(
+                        "MatchedVolume",
+                        FilterOperator.EQ,
+                        false
+                    )
+                );
+            }
+
+            // Matched Boxes
+            if (sBoxesKey === "matched") {
+                aFilters.push(
+                    new Filter(
+                        "MatchedBoxes",
+                        FilterOperator.EQ,
+                        true
+                    )
+                );
+            } else if (sBoxesKey === "unmatched") {
+                aFilters.push(
+                    new Filter(
+                        "MatchedBoxes",
+                        FilterOperator.EQ,
+                        false
+                    )
+                );
+            }
+
+            /*
+            * Multiple filters in this array are combined using AND.
+            *
+            * Example:
+            * MatchedUnits eq true and
+            * MatchedVolume eq false and
+            * MatchedBoxes eq true
+            */
+            oBinding.filter(aFilters);
+        },
+
+        onShippedBolClearFilter: function () {
+            this.byId("shippedBolUnitsFilter")
+                .setSelectedKey("all");
+
+            this.byId("shippedBolVolumeFilter")
+                .setSelectedKey("all");
+
+            this.byId("shippedBolBoxesFilter")
+                .setSelectedKey("all");
+
+            const oBinding =
+                this.byId("shippedBolTable")
+                    ?.getBinding("items");
+
+            if (oBinding) {
+                oBinding.filter([]);
+            }
+        },
+
+        /* =========================================================== */
+        /* Shipped Consignee BOL Check - Filter                        */
+        /* =========================================================== */
+
+        onShippedConsigneeBolFilter: function () {
+
+            const sKey =
+                this.byId(
+                    "shippedConsigneeBolMatchedFilter"
+                ).getSelectedKey();
+
+            const oBinding =
+                this.byId(
+                    "shippedConsigneeBolTable"
+                ).getBinding("items");
+
+            if (!oBinding) {
+                return;
+            }
+
+            const aFilters = [];
+
+            if (sKey === "matched") {
+                aFilters.push(
+                    new Filter(
+                        "Matched",
+                        FilterOperator.EQ,
+                        true
+                    )
+                );
+            } else if (sKey === "unmatched") {
+                aFilters.push(
+                    new Filter(
+                        "Matched",
+                        FilterOperator.EQ,
+                        false
+                    )
+                );
+            }
+
+            oBinding.filter(aFilters);
+        },
+
+        onShippedConsigneeBolClearFilter: function () {
+
+            this.byId(
+                "shippedConsigneeBolMatchedFilter"
+            ).setSelectedKey("all");
+
+            const oBinding =
+                this.byId(
+                    "shippedConsigneeBolTable"
+                ).getBinding("items");
+
+            if (oBinding) {
+                oBinding.filter([]);
+            }
+        },
+
+        /* =========================================================== */
+        /* Part Number BOL Check - Filter                              */
+        /* =========================================================== */
+
+        onPartNumberBolFilter: function () {
+
+            const sKey =
+                this.byId(
+                    "partNumberBolMatchedFilter"
+                ).getSelectedKey();
+
+            const oBinding =
+                this.byId(
+                    "partNumberBolCheckTable"
+                ).getBinding("items");
+
+            if (!oBinding) {
+                return;
+            }
+
+            const aFilters = [];
+
+            if (sKey === "matched") {
+                aFilters.push(
+                    new Filter(
+                        "Matched",
+                        FilterOperator.EQ,
+                        true
+                    )
+                );
+            } else if (sKey === "unmatched") {
+                aFilters.push(
+                    new Filter(
+                        "Matched",
+                        FilterOperator.EQ,
+                        false
+                    )
+                );
+            }
+
+            oBinding.filter(aFilters);
+        },
+
+        onPartNumberBolClearFilter: function () {
+
+            this.byId(
+                "partNumberBolMatchedFilter"
+            ).setSelectedKey("all");
+
+            const oBinding =
+                this.byId(
+                    "partNumberBolCheckTable"
+                ).getBinding("items");
+
+            if (oBinding) {
+                oBinding.filter([]);
+            }
+        },
+
+        /* =========================================================== */
+        /* Material Information Check - Filter                         */
+        /* =========================================================== */
+
+        onMaterialInformationFilter: function () {
+
+            const sKey =
+                this.byId(
+                    "materialInformationMatchedFilter"
+                ).getSelectedKey();
+
+            const oBinding =
+                this.byId(
+                    "materialInformationCheckTable"
+                ).getBinding("items");
+
+            if (!oBinding) {
+                return;
+            }
+
+            const aFilters = [];
+
+            if (sKey === "matched") {
+
+                aFilters.push(
+                    new Filter(
+                        "Matched",
+                        FilterOperator.EQ,
+                        true
+                    )
+                );
+
+            } else if (sKey === "unmatched") {
+
+                aFilters.push(
+                    new Filter(
+                        "Matched",
+                        FilterOperator.EQ,
+                        false
+                    )
+                );
+
+            }
+
+            oBinding.filter(aFilters);
+        },
+
+        onMaterialInformationClearFilter: function () {
+
+            this.byId(
+                "materialInformationMatchedFilter"
+            ).setSelectedKey("all");
+
+            const oBinding =
+                this.byId(
+                    "materialInformationCheckTable"
+                ).getBinding("items");
+
+            if (oBinding) {
+                oBinding.filter([]);
+            }
+        },
         /* =========================================================== */
         /* Existing Page Helpers                                       */
         /* =========================================================== */

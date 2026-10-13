@@ -2,78 +2,132 @@
 <core:FragmentDefinition
     xmlns="sap.m"
     xmlns:core="sap.ui.core">
-    <Table
-        id="partNumberBolCheckTable"
-        inset="false"
-        sticky="HeaderToolbar,ColumnHeaders"
-        items="{
-            path:'/PartNumberBOLCheck'
-        }"
-        width="auto">
-        <headerToolbar>
-            <Toolbar id="partNumberBolCheckToolbar">
-                <Title id="partNumberBolCheckTitle" text="Part Number BOL Check"/>
-                <ToolbarSpacer id="ToolbarSpacerPartNumberBOLCheckTableBol"/>
+    <VBox
+    id="partNumberBolWrapper"
+    width="100%">
 
-                <Button id="ToolbarSpacerPartNumberBOLCheckTableBolbtn"
-                    text="{i18n>aiAssistantButtonText}"
-                    icon="sap-icon://ai"
-                    type="Emphasized"
-                    tooltip="{i18n>aiAssistantButtonTooltip}"
-                    press=".onAIPress">
-                    <customData>
-                        <core:CustomData
-                            key="tileKey"
-                            value="partNumberBOLCheck"/>
-                    </customData>
-                </Button>
-            </Toolbar>
-        </headerToolbar>
-        <columns>
-            <!-- PSA  -->
-            <Column id="partNumberBolCheckColumnPsaBolNumber">
-                <Text id="partNumberBolCheckHeaderPsaBolNumberText" text="{i18n>PSABolNumber}"/>
-            </Column>
-             <Column id="partNumberBolCheckColumnPsaPartNumber">
-                <Text id="partNumberBolCheckHeaderPsaTotalUnitsText" text="{i18n>PSAPartNumber}"/>
-            </Column>
-            <!-- DIS  -->
-            <Column id="partNumberBolCheckColumnDisBlading">
-                <Text id="partNumberBolCheckHeaderDisBolNumberText" text="{i18n>DISBlading}"/>
-            </Column>
-            <Column id="partNumberBolCheckColumnDisPartNumber">
-                <Text id="partNumberBolCheckHeaderDisPartNumberText" text="{i18n>DISPartNumber}"/>
-            </Column>
+        <HBox
+            id="partNumberBolFilterBar"
+            alignItems="End"
+            wrap="Wrap"
+            class="sapUiSmallMarginBottom">
 
-            <!-- Matched Columns -->
-            <Column id="partNumberBolCheckColumnMatched">
-                <Text id="partNumberBolCheckHeaderMatchedText" text="{i18n>Matched}"/>
-            </Column>
-        </columns>
-        <items>
-            
-        <ColumnListItem id="partNumberBolCheckColumnListItem">
-            <cells>
+            <VBox
+                id="partNumberBolMatchedFilterBox"
+                class="sapUiSmallMarginEnd">
+
+                <Label id="_IDGenLabel5"
+                    text="{i18n>Matched}"
+                    labelFor="partNumberBolMatchedFilter"/>
+
+                <Select
+                    id="partNumberBolMatchedFilter"
+                    width="12rem"
+                    selectedKey="all">
+
+                    <core:Item id="_IDGenItem12"
+                        key="all"
+                        text="{i18n>filterAll}"/>
+
+                    <core:Item id="_IDGenItem13"
+                        key="matched"
+                        text="{i18n>filterMatched}"/>
+
+                    <core:Item id="_IDGenItem14"
+                        key="unmatched"
+                        text="{i18n>filterUnmatched}"/>
+
+                </Select>
+
+            </VBox>
+
+            <Button
+                id="partNumberBolFilterBtn"
+                text="{i18n>filterButtonText}"
+                icon="sap-icon://filter"
+                press=".onPartNumberBolFilter"/>
+
+            <Button
+                id="partNumberBolClearFilterBtn"
+                text="{i18n>clearFilterButtonText}"
+                icon="sap-icon://clear-filter"
+                press=".onPartNumberBolClearFilter"/>
+
+        </HBox>
+        <Table
+            id="partNumberBolCheckTable"
+            inset="false"
+            sticky="HeaderToolbar,ColumnHeaders"
+            items="{
+                path:'/PartNumberBOLCheck'
+            }"
+            width="auto">
+            <headerToolbar>
+                <Toolbar id="partNumberBolCheckToolbar">
+                    <Title id="partNumberBolCheckTitle" text="Part Number BOL Check"/>
+                    <ToolbarSpacer id="ToolbarSpacerPartNumberBOLCheckTableBol"/>
+
+                    <Button id="ToolbarSpacerPartNumberBOLCheckTableBolbtn"
+                        text="{i18n>aiAssistantButtonText}"
+                        icon="sap-icon://ai"
+                        type="Emphasized"
+                        tooltip="{i18n>aiAssistantButtonTooltip}"
+                        press=".onAIPress">
+                        <customData>
+                            <core:CustomData
+                                key="tileKey"
+                                value="partNumberBOLCheck"/>
+                        </customData>
+                    </Button>
+                </Toolbar>
+            </headerToolbar>
+            <columns>
+                <!-- PSA  -->
+                <Column id="partNumberBolCheckColumnPsaBolNumber">
+                    <Text id="partNumberBolCheckHeaderPsaBolNumberText" text="{i18n>PSABolNumber}"/>
+                </Column>
+                <Column id="partNumberBolCheckColumnPsaPartNumber">
+                    <Text id="partNumberBolCheckHeaderPsaTotalUnitsText" text="{i18n>PSAPartNumber}"/>
+                </Column>
+                <!-- DIS  -->
+                <Column id="partNumberBolCheckColumnDisBlading">
+                    <Text id="partNumberBolCheckHeaderDisBolNumberText" text="{i18n>DISBlading}"/>
+                </Column>
+                <Column id="partNumberBolCheckColumnDisPartNumber">
+                    <Text id="partNumberBolCheckHeaderDisPartNumberText" text="{i18n>DISPartNumber}"/>
+                </Column>
+
+                <!-- Matched Columns -->
+                <Column id="partNumberBolCheckColumnMatched">
+                    <Text id="partNumberBolCheckHeaderMatchedText" text="{i18n>Matched}"/>
+                </Column>
+            </columns>
+            <items>
                 
-                <!-- PSA -->
-                <Text id="partNumberBolCheckCellPsaBolNo" text="{PSABolNo}" />
-                <Text id="partNumberBolCheckCellPsaPartNumber" text="{PSAPartNumber}" />
+            <ColumnListItem id="partNumberBolCheckColumnListItem">
+                <cells>
+                    
+                    <!-- PSA -->
+                    <Text id="partNumberBolCheckCellPsaBolNo" text="{PSABolNo}" />
+                    <Text id="partNumberBolCheckCellPsaPartNumber" text="{PSAPartNumber}" />
 
-                <!-- DIS -->
-                <Text id="partNumberBolCheckCellDisBlading" text="{DISBlading}" />
-                <Text id="partNumberBolCheckCellDisPartNumber" text="{DISPartNumber}" />
+                    <!-- DIS -->
+                    <Text id="partNumberBolCheckCellDisBlading" text="{DISBlading}" />
+                    <Text id="partNumberBolCheckCellDisPartNumber" text="{DISPartNumber}" />
 
-                <!-- Matched Units -->
-                    <ObjectStatus id="partNumberBolCheckStatusMatchedUnits"
-                        text="{= ${Matched} === 'Yes' ? 'Matched' : 'Unmatched' }"
-                        state="{= ${Matched} === 'Yes' ? 'Success' : 'Error' }"
-                        icon="{= ${Matched} === 'Yes'
+                    <!-- Matched Units -->
+                    <ObjectStatus
+                        id="partNumberBolCheckStatusMatchedUnits"
+                        text="{= %{Matched} === true ? 'Matched' : 'Unmatched' }"
+                        state="{= %{Matched} === true ? 'Success' : 'Error' }"
+                        icon="{= %{Matched} === true
                             ? 'sap-icon://accept'
                             : 'sap-icon://alert' }"/>
 
-            </cells>
-        </ColumnListItem>
+                </cells>
+            </ColumnListItem>
 
-        </items>
-    </Table>
+            </items>
+        </Table>
+    </VBox>
 </core:FragmentDefinition>
