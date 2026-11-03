@@ -21,6 +21,13 @@ async function chat(prompt) {
             }
         }
     );
+    // Token usage for this request
+    if (response.data.usage) {
+        console.log("[AI TOKEN USAGE]");
+        console.log("Prompt tokens:", response.data.usage.prompt_tokens);
+        console.log("Completion tokens:", response.data.usage.completion_tokens);
+        console.log("Total tokens:", response.data.usage.total_tokens);
+    }
     return response.data.choices[0].message.content;
 }
 
